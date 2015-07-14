@@ -1,0 +1,8 @@
+<span class="element element-{name}">
+	<input 
+		type="hidden" 
+		name="{name}" 
+		ng-model="formItem.{name}"
+		value="{value}" 
+	/>
+</span>

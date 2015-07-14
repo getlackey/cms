@@ -1,0 +1,12 @@
+{>"layouts/master" /}
+
+{<body}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 auth-error">
+            <h1>Authentication Error</h1>
+            <p>Your session token has expired. <a href="login">Login</a> to continue</p>
+        </div>
+    </div>
+</div>
+{/body}

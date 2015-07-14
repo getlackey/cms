@@ -1,0 +1,13 @@
+{>"layouts/master" /}
+
+{<body}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 auth-error">
+            <h1>Authorization Error</h1>
+            <p>Your user lacks the permissions required to access this resource.</p>
+            <p>Contact the administrator if you feel this is a mistake.</p>
+        </div>
+    </div>
+</div>
+{/body}

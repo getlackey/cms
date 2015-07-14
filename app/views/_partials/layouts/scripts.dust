@@ -1,0 +1,5 @@
+{@if cond=" '{isEdit}' === 'true' || '{isCMS}' === 'true' "}
+    <script src="js/admin.js"></script>
+{:else}
+    <script src="js/main.js"></script>
+{/if}

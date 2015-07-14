@@ -1,0 +1,9 @@
+<div class="row">
+    <div class="small-12 small-offset-0 medium-6 medium-offset-3 columns">
+        <div class="login-form">
+            <h2>Recover Password</h2>
+            <p>A message was sent to your email address with instruction on how to recover your password.</p>
+            <p>If the email doesn't arrive in the next hour please contact the website administrator.</p>
+        </div>
+    </div>
+</div>

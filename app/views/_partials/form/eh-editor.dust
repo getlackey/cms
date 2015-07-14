@@ -1,0 +1,11 @@
+<div class="element element-{name}">
+    <textarea 
+        name="{name}"
+		ng-model="formItem.{name}"
+        class="eh-editor"
+        {#required}required{/required} 
+        {#pattern}pattern="{.}"{/pattern} 
+    >
+        {value}
+    </textarea>
+</div>

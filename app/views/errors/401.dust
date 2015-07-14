@@ -1,0 +1,12 @@
+{>"layouts/master" /}
+
+{<body}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 auth-error">
+			<h1>Authentication Error</h1>
+			<p>You need to <a href="login">login</a> to access this resource.</p>
+		</div>
+	</div>
+</div>
+{/body}

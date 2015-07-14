@@ -1,0 +1,31 @@
+<nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+        <li class="name">
+            <h1><a href="./">Lackey CMS</a></h1>
+        </li>
+    </ul>
+
+    <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+            {^isCMS}
+                {@user isAny="admin developer"}
+                    <li><lk-api action="save"></i></lk-api></li>
+                    <li><lk-api action="cancel"></lk-api></li>
+                {/user}
+            {/isCMS}
+            {>"_partials/account/user-menu" /}
+        </ul>
+
+        <!-- Left Nav Section -->
+        {^isCMS}
+        {@user isAny="admin developer"}
+        <ul class="left">
+            {!
+            <li><button class="fa fa-cog" data-reveal-id="pageSettings"></button></li>
+            !}
+        </ul>
+        {/user}
+        {/isCMS}
+    </section>
+</nav>

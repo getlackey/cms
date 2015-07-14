@@ -1,0 +1,20 @@
+{^user}
+<li>
+    <a href="login">Login</a>
+</li>
+{:else}
+<li class="has-dropdown">
+    <a class="user" href="#">
+        <span>Account</span> 
+        <span>({user.name})</span>
+    </a>
+    <ul class="dropdown">
+      <li><a href="users/{user.slug}">My details</a></li>
+      <li class="active">
+            <form class="logout" method="post" action="sessions/{session._id}?_method=DELETE">
+                <button type="submit">Logout</button>
+            </form>
+        </li>
+    </ul>
+</li>
+{/user}

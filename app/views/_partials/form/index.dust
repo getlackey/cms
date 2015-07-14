@@ -1,0 +1,30 @@
+{> "_partials/form/head" /}
+
+{#form.items}
+    {#type}
+        {> "_partials/form/{type}" /}
+    {:else}
+        <div>Error: {err}</div>
+    {/type}
+{/form.items}
+
+{#form.fieldsets}
+<fieldset {#id}id="{.}"{/id}>
+    <div class="border-box border-box-grey">
+        <div class="box-heading">
+            <h2>{legend}</h2>
+        </div>
+        <div class="box-contents">
+            {#items}
+                {#type}
+                    {> "_partials/form/{type}" /}
+                {:else}
+                    <div>{err}</div>
+                {/type}
+            {/items}
+        </div>
+    </div>
+</fieldset>
+{/form.fieldsets}
+
+{> "_partials/form/foot" /}    

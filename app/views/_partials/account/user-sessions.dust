@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="small-12 small-offset-0 medium-6 medium-offset-3 columns">
+        <div class="login-form">
+            <h2>Active Sessions</h2>
+            {@api resource="{baseUrl}/sessions?find=%7B%22user._id%22:%22{user._id}%22,%22active%22:true%7D&jwt={jwt}"}
+                <ul>
+                    {#items}
+                    <li>
+                        Created At: {createdAt}<br>
+                        TTL: {ttl}s <br/>
+                        
+                        <form class="logout" method="post" action="sessions/{._id}?_method=DELETE">
+                            <button type="submit">Logout</button>
+                        </form>
+                    </li>
+                    {/items}
+                </ul>
+            {/api}
+        </div>
+    </div>
+</div>

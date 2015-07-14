@@ -1,0 +1,9 @@
+<!--    
+    {?form.hideSubmitButton}{:else}
+    <button class="btn btn-default btn-submit" type="submit" name="_method" value="{form.method}">Save Settings</button>
+    {/form.hideSubmitButton}
+    {?form.hideDeleteButton}{:else}
+    <button class="btn btn-default btn-submit" type="submit" name="_method" value="delete">Delete</button>
+    {/form.hideDeleteButton}
+-->
+</form>

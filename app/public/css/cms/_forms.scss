@@ -1,0 +1,121 @@
+/*
+    Copyright 2015 Enigma Marketing Services Limited
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+*/
+
+/* @group [viewport: > 0px] */
+@media #{$small-up} {
+	input[type="text"],
+	input[type="password"],
+	input[type="date"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="month"],
+	input[type="week"],
+	input[type="email"],
+	input[type="number"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="time"],
+	input[type="url"],
+	input,
+	textarea {
+		box-shadow: none;
+	}
+
+	input[type="radio"] {
+		margin-right: 8px;
+		margi-bottom: 3px;
+	}
+
+	label {
+		@include font-ssp(600);
+	}
+
+	form.user {
+		padding-top: 60px;
+	}
+
+	.options {
+		margin-left: 0;
+		margin-top: 5px;
+
+		li {
+			list-style: none;
+
+			label {
+				text-transform: capitalize;
+				@include font-ssp(400);
+			}
+		}
+	}
+
+	.import-file,
+	.add-item,
+	.recover {
+		font-size: 14px;
+		padding-bottom: 30px;
+	}
+
+	input.search {
+		width: 215px;
+		height: 40px;
+		border-radius: 20px;
+		padding-left: 20px;
+		padding-right: 40px;
+		background: url('/img/search-bg.png') no-repeat right center $em-white;
+		&:focus {
+			background: url('/img/search-bg.png') no-repeat right center $em-white;
+		}
+	}
+}
+/* @endgroup */
+
+/* @group [viewport: > 641px] */
+@media #{$medium-up} {}
+/* @endgroup */
+
+/* @group [viewport: > 1025px] */
+@media #{$large-up} {}
+/* @endgroup */
+
+/* @group [viewport: > 1441px] */
+@media #{$xlarge-up} {}
+/* @endgroup */
+
+/* @group [viewport: > 1921px] */
+@media #{$xxlarge-up} {}
+/* @endgroup */
+
+
+
+/* @group [viewport: 0 > 640px] */
+// @media #{$small-only} {}
+/* @endgroup */
+
+/* @group [viewport: 641px > 1024px] */
+// @media #{$medium-only} {}
+/* @endgroup */
+
+/* @group [viewport: 1025px > 1440px] */
+// @media #{$large-only} {}
+/* @endgroup */
+
+/* @group [viewport: 1441px > 1920px] */
+// @media #{$xlarge-only} {}
+/* @endgroup */
+
+/* @group [viewport: > 1921px] */
+// @media #{$xxlarge-only} {}
+/* @endgroup */

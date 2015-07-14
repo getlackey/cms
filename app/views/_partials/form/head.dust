@@ -1,0 +1,9 @@
+<form 
+    {#form.id}id="{.}"{/form.id} 
+    method="{@eq key="form.method" value="get"}get{:else}post{/eq}" 
+    action="{form.action}" 
+    enctype="{#form.enctype}{.}{:else}application/x-www-form-urlencoded{/form.enctype}"
+>
+    {#_csrf}
+    <input type="hidden" name="_csrf" value="{_csrf}" />
+    {/_csrf}

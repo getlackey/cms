@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="small-12 small-offset-0 medium-6 medium-offset-3 columns">
+        <div class="login-form">
+            <h2>Account Settings</h2>
+            <form class="user" method="post" action="users/{slug}?_method=PUT">
+                <div class="row">
+                    <div class="small-12 columns">
+                        <label>Name:</label>
+                        <input type="text" value="{name}" name="name" />
+                    </div>
+                    <div class="small-12 columns">
+                        <label>Password:</label>
+                        <input type="password" name="passwordStrategy[password]" value="" placeholder="Password">
+                    </div>
+                    <div class="small-12 columns">
+                        <label>Email:</label>
+                        <input 
+                            type="text" 
+                            value="{email}" 
+                            {@user isAny="admin developer"}{:else}readonly{/user}
+                        />
+                    </div>
+                    <div class="small-12 columns">
+                        <label>Group:</label>
+                        {@user isAny="admin developer"}
+                            <select name="group">
+                            {@options resource="/models/user/groups.json"}
+                            {#items}
+                                <option value="{key}" {@eq key=key value=group}selected{/eq}>{value}</option>
+                            {/items}
+                            {/options}
+                            </select>
+                        {:else}
+                            <input type="text" value="{group}" readonly />
+                        {/user}
+                    </div>
+                    <div class="small-12 columns">
+                        <label>Grants:</label>
+                        <input 
+                            type="text" 
+                            name="grants"
+                            value="{#grants}{.}{@sep}, {/sep}{/grants}" 
+                            {@user isAny="admin developer"}{:else}readonly{/user}
+                        />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="buttons">
+                        <div class="small-6 columns">
+                            <input class="button" type="submit" value="Save">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

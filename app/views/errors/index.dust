@@ -1,0 +1,19 @@
+{>"layouts/master" /}
+
+{<body}
+<div class="row">
+   <div class="small-10 small-offset-1 medium-8 medium-offset-2 columns" >
+    <h1>{status} {name}</h1>
+    <p><big>{message}</big></p>
+
+    {?errors}
+    	<h2>Errors:</h2>
+    	<ul>
+		    {#errors}
+		    <li>{.}</li>
+		    {/errors}
+		</ul>
+    {/errors}
+	</div>
+</div>
+{/body}

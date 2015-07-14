@@ -1,0 +1,146 @@
+/*
+   Copyright 2015 Enigma Marketing Services Limited
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
+
+.top-bar {
+   background-color: $em-dark-grey;
+   height: 60px;
+
+   .logo {
+      display: block;
+      padding: 21px 0;
+      margin: 0 30px;
+   }
+
+   .top-bar-section {
+      li:not(.has-form) {
+         a:not(.button) {
+            height: auto;
+         }
+      }
+
+      .fa {
+         font-size: 28px;
+         padding-top: 15px;
+      }
+      .right {
+         li {
+            a {
+               line-height: 59px;
+            }
+            button {
+               margin-top: 5px;
+               height: auto;
+            }
+         }
+      }
+      .left {
+         li {
+            button {
+               margin-top: 5px;
+               padding: 0;
+               background-color: transparent;
+            }
+         }
+      }
+      ul {
+         li {
+            background-color: transparent;
+
+            a {
+               background-color: transparent;
+            }
+         }
+         li:not(.has-form) {
+            a:not(.button) {
+               background-color: transparent;
+            }
+         }
+         .has-dropdown {
+            @include clearfix;
+
+            .avatar {
+               float: left;
+            }
+            .user {
+               margin-left: 15px;
+               padding: 10px 0 10px 40px;
+               background: url('/img/avatar.png') no-repeat center left transparent;
+
+               &:hover {
+                  background: url('/img/avatar.png') no-repeat center left transparent;
+               }
+            }
+            span {
+               @include font-ssp(700);
+               display: block;
+               height: 20px;
+               line-height: 20px;
+            }
+
+            .dropdown {
+               li {
+                  a, button {
+                     width: 100%;
+                     height: 35px;
+                     @include font-ssp(700);
+                  }
+                  a {
+                     line-height: 35px;
+                  }
+                  button {
+                     line-height: 20px;
+                     background-color: $em-blue;
+                     margin-top: 0;
+                  }
+               }
+            }
+         }
+         .has-dropdown > a {
+            &:after {
+               top: 30px;
+               border-top: inset 6px rgba(255, 255, 255, 0.4);
+               border-right: inset 6px transparent;
+               border-bottom: inset 6px transparent;
+               border-left: inset 6px transparent;
+            }
+         }
+      }
+   }
+}
+
+
+
+
+// SUSPECT DEFUNT CSS FROM TIAGO
+// =======================================
+
+.header {
+   .logo {
+      float: left;
+   }
+
+   .menu {
+      float: right;
+   }
+   
+   &:after {
+      content: ".";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden;
+   }
+}

@@ -1,0 +1,12 @@
+{>"layouts/master" /}
+
+{<body}
+<div class="row">
+   <div class="small-10 small-offset-1 medium-8 medium-offset-2 columns">
+        <h1>Activity Stream</h1>
+        <ul>
+        {>"_partials/activity-streams/items" /}
+        </ul>
+    </div>
+</div>
+{/body}

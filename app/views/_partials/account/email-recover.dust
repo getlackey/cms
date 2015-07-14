@@ -1,0 +1,9 @@
+<div class="row">
+    <div class="small-12 small-offset-0 medium-6 medium-offset-3 columns">
+        <div class="login-form">
+            <h2>Hi {user.name},</h2>
+            <p>You can change your password by accessing this url:</p>
+            <p><a href="{recoverUrl}">{recoverUrl}</a></p>
+        </div>
+    </div>
+</div>

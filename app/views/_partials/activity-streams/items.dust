@@ -1,0 +1,15 @@
+{#items}
+<li class="activity-stream-item">
+    <b>{createdAt|js} {author.email}</b><br>
+    <a class="request-link" href="/activity-streams/{id}">
+    	<i>{response.status} {method} {url}</i>
+   	</a>
+
+    {! is last item? !}
+    {@math key=$idx method="add" operand="1"}
+        {@eq value=$len}
+        <br/><a class="button load-more" href='/activity-streams.html?sort=-_id&limit=100&find={~lb}"_id":{~lb}"$lt":"{id}"{~rb}{~rb}'>Load More</a>
+        {/eq}
+    {/math}
+</li>
+{/items}

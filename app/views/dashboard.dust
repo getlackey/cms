@@ -1,0 +1,15 @@
+{>"layouts/master" /}
+
+{<body}
+<div class="row">
+   <div class="small-10 small-offset-1 medium-8 medium-offset-2 columns">
+      	<h1>Dashboard</h1>
+
+		<h2>Activity Stream</h2>
+		{@api resource="{baseUrl}/activity-streams.json?sort=-_id&jwt={jwt}&limit=5"}
+			<ul>
+			 	{>"_partials/activity-streams/items" /}
+			</ul>
+		{/api}
+</div>
+{/body}

@@ -1,0 +1,13 @@
+<div class="element element-{name} row">
+	<div class="small-3 columns">
+		<label>{label}:</label>
+	</div>
+	<div class="small-9 columns">
+		<input 
+			type="file" 
+			name="{name}[]" 
+			ng-model="formItem.{name}"
+			multiple="multiple" 
+		/>
+	</div>
+</div>

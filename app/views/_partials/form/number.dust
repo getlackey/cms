@@ -1,0 +1,17 @@
+<div class="element element-{name} row">
+	<div class="small-3 columns">
+		<label>{label}: </label>
+	</div>
+	<div class="small-9 columns">
+		<input 
+            type="number" 
+            name="{name}" 
+            ng-model="formItem.{name}"
+            value="{value}" 
+            {#min}min="{.}"{/min} 
+            {#max}max="{.}"{/max} 
+            {#step}step="{.}"{/step} 
+            {#required}required{/required} 
+        />
+	</div>
+</div>

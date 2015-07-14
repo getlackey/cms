@@ -1,0 +1,6 @@
+{>"layouts/master" /}
+
+{<body}
+    {>"_partials/account/user-form" /}
+    {>"_partials/account/user-sessions" /}
+{/body}

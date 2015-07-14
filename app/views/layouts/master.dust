@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" {?isEdit}ng-app="lkEdit"{/isEdit} {?isCMS}data-ng-app="lkCMS" data-ng-controller="cmsGrid"{/isCMS} >
+    <head>
+        {>"_partials/layouts/base-tag" /}
+        {>"_partials/layouts/metatags" /}
+        {>"_partials/layouts/stylesheets" /}
+        <script src="js/head.js"></script>
+        {!}
+        <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+        {!}
+    </head>
+    <body class="{@user isAny="admin developer"}admin{/user} {user.group} {?isEdit}edit{/isEdit} {?isCMS}cms{/isCMS} " {?isEdit}lk-edit{/isEdit} >
+
+        <div class="off-canvas-wrap" data-offcanvas>
+            <div class="inner-wrap">
+                
+                <aside class="left-off-canvas-menu">
+                    <img src="/img/logo.png" class="logo" alt="logo">
+                    {>"_partials/layouts/editor-left-toolbar" /}
+                </aside>
+                
+                <div class="content-wrap">
+                    {>"_partials/layouts/header" /}
+                    
+                    {?isEdit}<lk-error ttl="10000"></lk-error>{/isEdit}
+                    {+body /}
+                    {>"_partials/layouts/footer" /}
+
+                    <a class="exit-off-canvas"></a>
+                </div>
+            </div>
+        </div>
+        
+        {>"_partials/layouts/page-settings" /}
+        {>"_partials/layouts/scripts" /}
+
+    </body>
+</html>

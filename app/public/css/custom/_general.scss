@@ -1,0 +1,37 @@
+body {
+	@include font-ssp(400);
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+	text-shadow:none;
+	text-rendering: optimizeLegibility;
+	font-smooth:always;
+	text-shadow:none;
+	filter:none;
+	background: $em-lightest-grey;
+	// padding-left: 60px;
+
+	h1, h2, h3, h4, h5, h6, p, ol, ul, div, span {
+		@include font-ssp(400);
+	}
+
+	h1, h2 {
+		color: $em-blue-heading;
+	}
+
+	p {
+		color: $em-dark-grey;
+	}
+
+	a, button {
+		outline: none;
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	hr {
+		width: 100%;
+		border-bottom: 1px solid $em-blue;
+	}
+}

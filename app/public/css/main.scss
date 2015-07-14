@@ -1,0 +1,10 @@
+// Core variables and mixins
+@import "custom/settings";
+
+@import "3rd-party/index";
+@import "mixins/index";
+@import "cms/index";
+
+// Custom stuff. Avoid touching the other folders, if possible.
+@import "custom/general";
+@import "custom/index";

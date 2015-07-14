@@ -1,0 +1,55 @@
+<div class="row">
+	<div class="small-12 small-offset-0 medium-6 medium-offset-3 columns">
+		<div class="login-form">
+
+		{^user}
+
+			<form class="user" method="post" action="{?req.query.recover}recover-sessions{:else}sessions{/req.query.recover}">
+				<div class="row">
+					<div class="small-12 columns">
+					
+						{?req.query.invalid}
+						<div class="error">
+							Unable to login. Invalid credentials.
+						</div>
+						{/req.query.invalid}
+
+						<input type="text" name="email" value="" placeholder="Username">
+					
+						{^req.query.recover}
+						<input type="password" name="password" value="" placeholder="Password">
+						<label><input type="checkbox" name="persistent"> Keep me logged in</label>
+						{/req.query.recover}
+					
+					</div>
+				</div>
+				<div class="row">
+					<div class="buttons">
+						<div class="small-12 columns recover">
+					
+							{?req.query.recover}
+							<a href="login">Login</a>
+							{:else}
+							<a href="login?recover=true">Forgot Password?</a>
+							{/req.query.recover}
+					
+						</div>
+						<div class="small-12 columns">
+							<input class="button" type="submit" value="{?req.query.recover}Submit{:else}Login{/req.query.recover}">
+						</div>
+					</div>
+				</div>
+			</form>
+		
+		{:else}
+
+			<form class="user" method="post" action="sessions/{session._id}?_method=DELETE">
+				<p>Logged in as {user.name}</p>
+				<button type="submit">Logout</button>
+			</form>
+		
+		{/user}
+		
+		</div>
+	</div>
+</div>

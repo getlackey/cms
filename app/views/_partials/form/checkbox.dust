@@ -1,0 +1,26 @@
+<div class="element element-{name} row">
+	<div class="small-3 columns">
+		{?label}<label>{label}: </label>{/label}
+	</div>
+	<div class="small-9 columns">
+		<div class="options row">
+			{#options topValues=value numOptions=options.length}
+			<div class="small-4 columns">
+				<label>
+					{label}
+					<input 
+						type="checkbox" 
+						ng-model="formItem.{name}"
+						name="{name}{@if cond="{numOptions} > 1"}[]{/if}" 
+						value="{value}"
+						{#topValues}
+							{@if cond="'{value}' === '{.}'"}checked{/if} 
+						{/topValues}
+						{?required}required{/required}
+					/>
+				</label>
+			</div>
+			{/options}
+		</div>
+	</div>
+</div>

@@ -1,0 +1,4 @@
+@mixin font-ssp($font-weight) {
+	font-family: $font-source-sans-pro;
+	font-weight: $font-weight;
+}

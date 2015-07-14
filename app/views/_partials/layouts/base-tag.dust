@@ -1,0 +1,5 @@
+{@if cond="'{env}' === 'staging' || '{env}' === 'production'"}
+<base href="/{base}" data-env="{env}"/>
+{:else}
+<base href="/{base}" data-env="{env}"/>
+{/if}

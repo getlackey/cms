@@ -1,0 +1,22 @@
+<div class="element element-{name} row">
+	<div class="small-12 columns">
+		<label>{label}: </label>
+		<ul class="options">
+		{#options topValue=value}
+			<li>
+				<label>
+					<input 
+						type="radio" 
+						name="{name}" 
+						ng-model="formItem.{name}"
+						value="{value}" 
+						{@if cond="('{topValue}'.length === 0 && '{value}' === '0') ||'{value}' === '{topValue}'"}checked{/if} 
+						{#required}required{/required}
+					/>
+					{label}
+				</label>
+			</li>
+		{/options}
+		</ul>
+	</div>
+</div>

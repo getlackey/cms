@@ -1,0 +1,14 @@
+<div class="element element-{name} row">
+	<div class="small-12 columns">
+		<label>{label}: </label>
+		<input 
+			type="text" 
+			name="{name}" 
+			placeholder="{name}" 
+			ng-model="formItem.{name}" 
+			value="{value}" 
+			{#required}required{/required} 
+			{#pattern}pattern="{.}"{/pattern} 
+		/>
+	</div>
+</div>

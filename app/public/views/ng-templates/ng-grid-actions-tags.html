@@ -1,0 +1,8 @@
+<div class="grid-action-cell" ng-hide="row.getProperty('type') != 'cms-defined'">
+   <a class="cms-delete" ng-click="$event.stopPropagation(); deleteThisRow(row.entity);">
+		<i class="fa fa-times"></i>
+   </a>
+   <a class="cms-edit" ng-click="$event.stopPropagation(); editThisRow(row.entity);">
+   	<i class="fa fa-pencil"></i>
+   </a>
+</div>

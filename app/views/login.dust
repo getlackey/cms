@@ -1,0 +1,9 @@
+{>"layouts/master" /}
+
+{<body}
+    {?req.query.sentRecover}
+        {>"_partials/account/sent-recover-message" /}
+    {:else}
+	   {>"_partials/account/login-form" /}
+    {/req.query.sentRecover}
+{/body}

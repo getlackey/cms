@@ -1,0 +1,14 @@
+[{
+    "_id": "559d05826e63d548259bacc8",
+    "name": "Developer",
+    "email": "admin@lackey.io",
+    "grants": [
+        "admin",
+        "developer",
+        "author-559d05826e63d548259bacc8"
+    ],
+    "group": "developer",
+    "passwordStrategy": {
+        "password": "lackeyio"
+    }
+}]

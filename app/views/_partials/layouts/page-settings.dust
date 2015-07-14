@@ -1,0 +1,33 @@
+{?isEdit}
+<div class="reveal-modal" data-reveal id="pageSettings">
+    <h1>Page Settings</h1>
+    {+page-settings}{/page-settings}
+
+    {@user is="developer"}
+    {?id}
+    <div class="row modal-row">
+        <div class="col-md-12">
+            <h2>Import Data</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"><span class="uploadLabel">Upload:</span></div>
+        <div class="col-md-8">
+            <lk-upload url="/{url.pathname[0]}/{id}?_method=PUT" accept="application/json"></lk-upload>
+        </div>
+    </div>
+
+    <div class="row modal-row">
+        <div class="col-md-12">
+            <h2>Export Data</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <a class="download-button" href="/api/v1/{url.pathname[0]}/{url.pathname[1]}.json?pretty=true" download="{url.pathname[1]}.json">Download JSON</a>
+        </div>
+    </div>
+    {/id}
+    {/user}
+</div>
+{/isEdit}

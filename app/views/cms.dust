@@ -1,0 +1,51 @@
+{>"layouts/master" /}
+
+{<body}
+
+	<div class="row heading-block">
+		<div class="small-12 columns" ng-cloak>
+			<h1>{@ng name="title" /}</h1>
+		</div>
+		<div class="small-12 columns"><hr></div>
+	</div>
+
+	<div class="row">
+		<div class="small-12 columns">
+			<div><button class="add" ng-click="toggleFormVisibility($event)">Add New <i class="fa fa-plus"></i></button></div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="small-12 columns">
+
+			<div class="add-item" ng-show="showForm">
+				{?form.items}
+				{> "_partials/form/head" /}
+				<!-- <h3>Add New Details</h3> -->
+				<div class="row add-item">
+					<div class="small-12 medium-6 columns">
+						{#form.items}
+						    {#type}
+						        {> "_partials/form/{type}" /}
+						    {:else}
+						        <div>Error: {err}</div>
+						    {/type}
+						{/form.items}
+						<button class="save" ng-click="submitForm($event)">Save</button>
+						<button class="cancel" ng-click="resetForm($event)">Cancel</button>
+						{> "_partials/form/foot" /}
+						{/form.items}
+					</div>
+				</div>
+			</div>
+
+			<div class="row data-table">
+				<div class="small-12 columns">
+					<div id="main-grid" data-ng-grid="gridOptions" data-columns="{columns}"></div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+{/body}

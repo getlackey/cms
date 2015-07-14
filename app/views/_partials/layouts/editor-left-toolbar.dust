@@ -1,0 +1,26 @@
+{@user isAny="developer admin"}
+<div id="editor-left-toolbar" class="admin-toolbar">
+    <ul>
+			<li>
+				<a class="left-off-canvas-toggle" href="#">
+					<span>Menu</span>
+					<i class="fa fa-bars"></i>
+				</a>
+			</li>
+
+			<li>
+				<a href="dashboard">
+					<span>Dashboard</span>
+					<i class="fa fa-tachometer"></i>
+				</a>
+			</li>
+
+			<li>
+				<a href="cms/users">
+					<span>Users</span>
+					<i class="fa fa-user"></i>
+				</a>
+			</li>
+    </ul>        
+</div>
+{/user}

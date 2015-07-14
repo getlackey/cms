@@ -1,0 +1,25 @@
+{
+  "name": "app",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.0",
+    "lodash": "~2.4.1",
+    "ng-grid": "~2.0.13",
+    "angular-sanitize": "~1.2.26",
+    "ng-file-upload": "~1.6.12",
+    "foundation": "~5.5.0",
+    "angular-upload": "~1.0.11"
+  },
+  "resolutions": {
+    "angular": "~1.4.0"
+  }
+}

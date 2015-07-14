@@ -1,0 +1,171 @@
+/*
+    Copyright 2015 Enigma Marketing Services Limited
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+*/
+
+/* @group [viewport: > 0px] */
+@media #{$small-up} {
+
+	.content-wrap {
+		padding-left: 60px;
+	}
+
+	.move-right > .inner-wrap {
+		@include translate3d($off-canvas-width - 60, 0, 0);
+	}
+
+	.inner-wrap {
+		min-height: 100vh;
+	}
+
+	.left-off-canvas-menu {
+		z-index: 9999;
+		left: 60px;
+	}
+
+	.move-right {
+		.admin-toolbar {
+			ul {
+				li {
+					a {
+						.fa {
+							@include translate3d(-165px, 0, 0);
+						}
+						.fa-bars {
+							opacity: 0.4;
+							@include translate3d(0, 0, 0);
+						}
+						span {
+							@include translate3d(0, 0, 0);
+							opacity: 1;
+						}
+					}
+					.left-off-canvas-toggle {
+						span {
+							opacity: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.admin-toolbar {
+		ul {
+			margin: 0;
+			padding: 0;
+			@include clearfix;
+
+			li {
+				list-style: none;
+				text-align: left;
+				overflow: hidden;
+
+				a {
+					position: relative;
+					color: $em-white;
+					display: block;
+					line-height: 59px;
+					padding: 0 20px;
+					border-bottom: 1px solid $em-blue-border;
+
+					&:hover {
+						background: url('/img/menu-bg.png') repeat-y left top $em-lightest-grey;
+
+						.fa {
+							color: $em-blue;
+							opacity: 1;
+						}
+						span {
+							color: $em-darkest-grey;	
+						}
+					}
+
+					.fa {
+						position: absolute;
+						right: 20px;
+						top: 15px;
+						font-size: 28px;
+						opacity: 0.4;
+						@include transition(transform, 0.5s, $easeInOutCubic);
+
+						&:hover {
+							color: $em-blue;
+							opacity: 1;
+						}
+					}
+					.fa-bars {
+						opacity: 1;
+					}
+					span {
+						text-transform: uppercase;
+						display: inline-block;
+						opacity: 0;
+						padding-left: 50px;
+						@include translate3d(0, -40px, 0);
+						@include transition(transform, 1.1s, $easeInOutCubic);
+					}
+				}
+				.left-off-canvas-toggle {
+					span {
+						opacity: 0;
+					}
+					&:hover {
+						background-color: transparent;
+						background-image: none;
+					}
+				}
+			}
+		}
+	}
+}
+/* @endgroup */
+
+/* @group [viewport: > 641px] */
+@media #{$medium-up} {}
+/* @endgroup */
+
+/* @group [viewport: > 1025px] */
+@media #{$large-up} {}
+/* @endgroup */
+
+/* @group [viewport: > 1441px] */
+@media #{$xlarge-up} {}
+/* @endgroup */
+
+/* @group [viewport: > 1921px] */
+@media #{$xxlarge-up} {}
+/* @endgroup */
+
+
+
+/* @group [viewport: 0 > 640px] */
+// @media #{$small-only} {}
+/* @endgroup */
+
+/* @group [viewport: 641px > 1024px] */
+// @media #{$medium-only} {}
+/* @endgroup */
+
+/* @group [viewport: 1025px > 1440px] */
+// @media #{$large-only} {}
+/* @endgroup */
+
+/* @group [viewport: 1441px > 1920px] */
+// @media #{$xlarge-only} {}
+/* @endgroup */
+
+/* @group [viewport: > 1921px] */
+// @media #{$xxlarge-only} {}
+/* @endgroup */

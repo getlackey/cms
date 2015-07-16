@@ -38,6 +38,11 @@ module.exports = function ($scope, restEntity, $sce) {
         });
     }
 
+    $scope.filterOptions = {
+        filterText: '',
+        useExternalFilter: false
+    };
+
     if ($scope.myData === undefined) {
         $scope.myData = restEntity.fetchItems({
             include: Object.keys(dataColumns).join(',')
@@ -50,7 +55,8 @@ module.exports = function ($scope, restEntity, $sce) {
             enableColumnResize: true,
             enableColumnReordering: false,
             enableRowReordering: false,
-            showFilter: true,
+            filterOptions: $scope.filterOptions,
+            showFilter: false,
             columnDefs: 'myColumns',
             enableSorting: true,
             rowHeight: 40,

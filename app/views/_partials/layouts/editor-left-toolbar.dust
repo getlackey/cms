@@ -16,6 +16,13 @@
 			</li>
 
 			<li>
+				<a href="cms/pages">
+					<span>Pages</span>
+					<i class="fa fa-newspaper-o"></i>
+				</a>
+			</li>
+
+			<li>
 				<a href="cms/users">
 					<span>Users</span>
 					<i class="fa fa-user"></i>

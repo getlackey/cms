@@ -17,8 +17,9 @@
 */
 
 var pluralize = require('pluralize'),
-    logger = require('./logger'),
+    logger = require('../logger'),
     formData = require('lackey-form-data'),
+    makeTitle = require('lackey-make-title'),
     optionsParser = require('lackey-options-parser'),
     cms = {
         items: []
@@ -48,7 +49,7 @@ cms.register = function (obj) {
 
 cms.getForm = function (controller) {
     var entity = controller,
-        Entity = require('../models/' + pluralize.singular(entity));
+        Entity = require('../../models/' + pluralize.singular(entity));
 
     return {
         action: entity,
@@ -75,6 +76,7 @@ cms.getData = function (controller) {
     }
 
     data.entity = controller;
+    data.title = makeTitle(controller);
     data.form = objDefs.form;
     data.columns = objDefs.columns;
 

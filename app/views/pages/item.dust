@@ -1,0 +1,10 @@
+{>"layouts/master" /}
+
+{<body}
+<div class="row">
+   <div class="small-10 small-offset-1 medium-8 medium-offset-2 columns">
+        <h1>{title}</h1>
+        {.|js}
+    </div>
+</div>
+{/body}

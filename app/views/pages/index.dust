@@ -1,0 +1,14 @@
+{>"layouts/master" /}
+
+{<body}
+<div class="row">
+   <div class="small-10 small-offset-1 medium-8 medium-offset-2 columns">
+        <h1>Pages</h1>
+        <ul>
+        	{#items}
+	        <li><a href="{baseUrl}{.path}">{title}</a></li>
+        	{/items}
+        </ul>
+    </div>
+</div>
+{/body}

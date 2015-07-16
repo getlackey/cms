@@ -1,0 +1,12 @@
+{>"layouts/master" /}
+
+{<body}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 auth-error">
+            <h1>Page Not Found</h1>
+            <p>The page you were trying to find doesn't exist.</p>
+        </div>
+    </div>
+</div>
+{/body}

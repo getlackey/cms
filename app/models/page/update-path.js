@@ -1,4 +1,4 @@
-/*jslint node:true, unparam:true */
+/*jslint node:true, nomen: true */
 'use strict';
 /*
     Copyright 2015 Enigma Marketing Services Limited
@@ -15,12 +15,21 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
+var path = require('path');
 
+module.exports = function (next) {
+    var self = this;
+    self.populate('parent', 'path', function (err) {
+        var paths;
 
-var enrouten = require('express-enrouten');
+        if (err) {
+            return next(err);
+        }
+        paths = (self.parent && self.parent.path.split('/')) || [];
+        paths.push(self.slug);
 
-module.exports = function (server) {
-    server.use(enrouten({
-        directory: '../controllers'
-    }));
+        self.path = paths.join('/');
+
+        next();
+    });
 };

@@ -8,5 +8,6 @@ module.exports = {
             populateScope($scope, restEntity, $sce);
         });
     },
-    imports: require('./imports')
+    pages: require('./pages'),
+    users: require('./users')
 };

@@ -1,6 +1,9 @@
-<div class="grid-action-cell" ng-hide="row.getProperty('type') != 'cms-defined'">
+<div class="grid-action-cell">
 	<a class="cms-delete" ng-click="$event.stopPropagation(); deleteThisRow(row.entity);">
 		<i class="fa fa-times" title="Delete"></i>
+	</a>
+	<a class="cms-edit" ng-click="$event.stopPropagation(); addChildToThisRow(row.entity);">
+		<i class="fa fa-plus-circle" title="Add Child Page"></i>
 	</a>
 	<a class="cms-edit" ng-click="$event.stopPropagation(); editThisRow(row.entity);">
 		<i class="fa fa-pencil" title="Edit"></i>

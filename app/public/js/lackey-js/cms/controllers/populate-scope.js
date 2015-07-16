@@ -31,11 +31,15 @@ module.exports = function ($scope, restEntity, $sce) {
         });
 
         //add actions
-        $scope.myColumns.push({
-            displayName: '',
-            cellTemplate: 'views/ng-templates/ng-grid-actions.html',
-            width: '100px'
-        });
+        if ($scope.addActions) {
+            $scope.addActions();
+        } else {
+            $scope.myColumns.push({
+                displayName: '',
+                cellTemplate: 'views/ng-templates/ng-grid-actions.html',
+                width: '100px'
+            });
+        }
     }
 
     $scope.filterOptions = {

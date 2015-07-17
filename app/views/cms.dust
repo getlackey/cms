@@ -1,7 +1,6 @@
 {>"layouts/master" /}
 
 {<body}
-
 	<div class="row heading-block">
 		<div class="small-12 columns" ng-cloak>
 			<h1>{title}</h1>
@@ -39,8 +38,26 @@
 				</div>
 			</div>
 
+			<div class="row">
+				<div class="small-12 medium-4 columns">
+				{?hasLocale}
+                    {@options resource="/config/locales.json"}
+                    {@gt key=items.length value=1}
+					<select class="search locale" ng-model="locale" ng-name="locale">
+                        {#items}
+                            <option value="{key}" {@eq key=key value=locality.locale}selected{/eq}>{value} ({key})</option>
+                        {/items}
+					</select>
+					{/gt}
+                    {/options}
+				{/hasLocale}
+				</div>
+				<div class="small-12 medium-8 columns">
+					<input type="text" ng-model="filterOptions.filterText" ng-name="filterOptions.filterText" class="search right" placeholder="filter list items"/>
+				</div>
+			</div>
 
-			<input type="text" ng-model="filterOptions.filterText" ng-name="filterOptions.filterText" class="search right" placeholder="filter list items"/>
+			
 
 			<div class="row data-table">
 				<div class="small-12 columns">

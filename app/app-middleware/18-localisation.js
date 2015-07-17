@@ -82,7 +82,6 @@ parseUrl = function (url) {
     if (isCountryValid) {
         obj.country = country;
     }
-
     return obj;
 };
 
@@ -186,7 +185,6 @@ module.exports = function (server) {
         });
 
         req.url = url;
-
         next();
     });
 };

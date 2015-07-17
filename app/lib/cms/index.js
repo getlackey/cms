@@ -40,6 +40,10 @@ cms.register = function (obj) {
         }
     }
 
+    if (obj.hasLocale === undefined) {
+        obj.hasLocale = true;
+    }
+
     if (!obj.form) {
         obj.form = self.getForm(obj.controller);
     }
@@ -79,6 +83,7 @@ cms.getData = function (controller) {
     data.title = makeTitle(controller);
     data.form = objDefs.form;
     data.columns = objDefs.columns;
+    data.hasLocale = objDefs.hasLocale;
 
     return data;
 };

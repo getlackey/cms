@@ -109,7 +109,7 @@ module.exports = function (router) {
 
                             return user;
                         })
-                        .then(mongooseUtils.mergeData(doc))
+                        .then(mongooseUtils.update(doc))
                         .then(mongooseUtils.save)
                         .then(o.formatOutput('_id:id'))
                         .then(o.handleOutput('html:redirect(' + redirectUrl + ') json'))

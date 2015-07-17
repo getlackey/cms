@@ -36,6 +36,7 @@ module.exports = {
     },
     locale: {
         type: String,
+        required: true,
         'enum': locales.getKeys(),
         'default': config.get('defaultLocale')
     },

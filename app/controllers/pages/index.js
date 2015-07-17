@@ -2,6 +2,7 @@
 'use strict';
 
 var config = require('config'),
+    merge = require('merge'),
     Page = require('../../models/page'),
     handler = require('lackey-request-handler'),
     mongooseUtils = require('lackey-mongoose-utils'),
@@ -80,6 +81,7 @@ module.exports = function (router) {
         handler(handlerOptions, function (o) {
             Page
                 .find(o.find())
+                .setLocality(o.req.locality)
                 .checkAcl(o.res.user)
                 .select(o.select('title slug path'))
                 .sort(o.sort('-_id'))
@@ -182,7 +184,7 @@ module.exports = function (router) {
                         .findOne(o.getFilter('id:ObjectId(_id)'))
                         .exec()
                         .then(o.handle404())
-                        .then(mongooseUtils.mergeData(doc))
+                        .then(mongooseUtils.update(doc))
                         .then(mongooseUtils.save)
                         .then(o.formatOutput('_id:id'))
                         .then(o.handleOutput())

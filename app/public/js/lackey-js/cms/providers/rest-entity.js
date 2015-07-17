@@ -1,4 +1,5 @@
 /*jslint node:true, browser:true, unparam:true */
+/*global angular */
 'use strict';
 
 var pluralize = require('pluralize');
@@ -61,67 +62,6 @@ module.exports = function (app) {
                 obj.setTitle.item = item;
                 // fetch definitions will set the title using this properties
             };
-
-            // obj.fetchDefinitions = function () {
-            //     obj.definitions = [];
-
-            //     $http({
-            //         method: 'GET',
-            //         url: 'swagger-ui/api-docs.json/' + self.entityName
-            //     }).success(function (data) {
-            //         var modelName,
-            //             properties;
-
-            //         // get model name from the api methods.
-            //         // we're looking for the POST on base path
-            //         data.apis.some(function (api) {
-            //             var apiPath = api.path;
-            //             return api.operations.some(function (operation) {
-            //                 if (operation.httpMethod === 'POST' && apiPath === '/' + obj.entityName) {
-            //                     modelName = operation.type;
-            //                     return true;
-            //                 }
-            //                 return false;
-            //             });
-            //         });
-
-            //         // table column properties
-            //         properties = data.models[modelName] && data.models[modelName].properties;
-            //         if (properties) {
-            //             //set page title
-            //             if (data.models[modelName].title && obj.setTitle.item) {
-            //                 obj.entityTitle = data.models[modelName].title || obj.entityName;
-            //                 obj.setTitle.$scope.data[obj.setTitle.item] = $sce.trustAsHtml(obj.entityTitle);
-            //             }
-
-            //             Object.keys(properties).forEach(function (field) {
-            //                 if (properties[field].label) {
-            //                     obj.definitions.push({
-            //                         field: field,
-            //                         displayName: properties[field].label
-            //                     });
-            //                 }
-            //             });
-
-            //             if (obj.items) {
-            //                 obj.fetch(0);
-            //             }
-            //             if (obj.definitions.length) {
-            //                 obj.addActions();
-            //             }
-            //         }
-            //     });
-
-            //     return obj.definitions;
-            // };
-
-            // obj.addActions = function () {
-            //     obj.definitions.push({
-            //         displayName: '',
-            //         cellTemplate: 'views/ng-templates/ng-grid-actions.html',
-            //         width: '100px'
-            //     });
-            // };
 
             obj.save = function (item, cb) {
                 if (!cb) {

@@ -21,6 +21,12 @@
 					<i class="fa fa-newspaper-o"></i>
 				</a>
 			</li>
+			<li>
+				<a href="cms/tags">
+					<span>Tags</span>
+					<i class="fa fa-tag"></i>
+				</a>
+			</li>
 
 			<li>
 				<a href="cms/users">

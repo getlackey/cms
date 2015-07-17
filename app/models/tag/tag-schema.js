@@ -16,15 +16,28 @@
     limitations under the License.
 */
 
+var mongoose = require('mongoose'),
+    config = require('config'),
+    optionsParser = require('lackey-options-parser'),
+    locales = optionsParser(config.get('locales')),
+    Schema = mongoose.Schema;
 
 module.exports = {
-    title: String,
+    title: {
+        type: String,
+        required: true
+    },
     slug: {
         type: String,
         unique: true
     },
-    type: {
+    locale: {
         type: String,
-        index: true
-    } // eg. universe. Types are rather loose, any keyword works
+        required: true,
+        'enum': locales.getKeys(),
+        'default': config.get('defaultLocale')
+    },
+    author: {
+        type: Schema.Types.Mixed
+    }
 };

@@ -11,8 +11,24 @@ module.exports = function ($scope, restEntity, $sce) {
     elm = document.getElementById('main-grid');
     dataColumns = optionsParser(elm.getAttribute('data-columns')).stripUnderscores().makeTitle();
 
+
     if (!elm) {
         throw new Error('unable to find grid container element with id main-grid');
+    }
+
+    $scope.locale = angular.element('.search.locale').val() || null;
+
+    if ($scope.locale) {
+        $scope.$watch('locale', function (current, previous) {
+            if (current !== previous) {
+                $scope.myData = restEntity.fetchItems({
+                    include: Object.keys(dataColumns).join(','),
+                    find: {
+                        locale: $scope.locale
+                    }
+                });
+            }
+        });
     }
 
     $scope.data = {
@@ -49,7 +65,10 @@ module.exports = function ($scope, restEntity, $sce) {
 
     if ($scope.myData === undefined) {
         $scope.myData = restEntity.fetchItems({
-            include: Object.keys(dataColumns).join(',')
+            include: Object.keys(dataColumns).join(','),
+            find: {
+                locale: $scope.locale
+            }
         });
     }
 

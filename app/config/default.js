@@ -78,7 +78,7 @@ cfg.mailer = {
 
 // use lackey-options format
 // https://www.npmjs.com/package/lackey-options-parser
-cfg.locales = ["en_GB:English"];
+cfg.locales = require('./locales.json');
 cfg.defaultLocale = 'en_GB';
 
 cfg.slugFormat = 'ascii'; //ascii, utf8
@@ -88,6 +88,9 @@ cfg.slugFormat = 'ascii'; //ascii, utf8
     (eg. articles) will be filtered by req.locality and slug.
 */
 cfg.localisedRoutes = {};
+cfg.localisedRoutes.pt_PT = [
+    '^/paginas(/?.*) /pages$1'
+];
 
 /* 
     Issues a 302 redirect on these routes
@@ -96,7 +99,9 @@ cfg.localisedRoutes = {};
 */
 cfg.redirectRoutes = [
     '^/en/GB/?(.*) /$1',
-    '^/en/?(.*) /$1'
+    '^/en/?(.*) /$1',
+
+    '^/pt/PT/pages(/?.*) /pt/PT/paginas$1'
 ];
 
 /*

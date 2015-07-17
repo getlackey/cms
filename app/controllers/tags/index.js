@@ -18,10 +18,11 @@
 
 
 var config = require('config'),
-    Tag = require('../../models/tag'),
     handler = require('lackey-request-handler'),
     mongooseUtils = require('lackey-mongoose-utils'),
+    cms = require('../../lib/cms'),
     auth = require('../../lib/auth'),
+    Tag = require('../../models/tag'),
     handlerOptions = {
         logger: require('../../lib/logger'),
         // NOTE: remember to keep doc/comments in sync
@@ -29,6 +30,11 @@ var config = require('config'),
         skip: 10000,
         sort: '_id slug createdAt'
     };
+
+cms.register({
+    controller: 'tags',
+    columns: 'title slug locale createdAt'
+});
 
 /**
  * @swaggerTag
@@ -192,7 +198,7 @@ module.exports = function (router) {
                         .findOne(o.getFilter('id:ObjectId(_id)'))
                         .exec()
                         .then(o.handle404())
-                        .then(mongooseUtils.mergeData(doc))
+                        .then(mongooseUtils.update(doc))
                         .then(mongooseUtils.save)
                         .then(o.formatOutput('_id:id'))
                         .then(o.handleOutput())

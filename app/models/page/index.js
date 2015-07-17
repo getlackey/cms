@@ -23,6 +23,7 @@ var mongoose = require('mongoose'),
     acl = require('lackey-mongoose-acl'),
     slugify = require('lackey-mongoose-slugify'),
     logger = require('../../lib/logger'),
+    mongooseLocality = require('../../lib/mongoose-locality'),
     Schema = mongoose.Schema,
     schemaName = 'page',
     Model,
@@ -51,6 +52,7 @@ mongoSchema.plugin(timestamps);
 mongoSchema.plugin(acl, {
     required: ['admin', 'developer']
 });
+mongoSchema.plugin(mongooseLocality);
 mongoSchema.plugin(slugify, {
     logger: logger
 });
@@ -73,27 +75,6 @@ mongoSchema.pre('validate', require('./update-path'));
 
 Model = dbs.main.model(schemaName, mongoSchema);
 
-(function () {
-    var modelFind = Model.find;
-    // We are overwriting/extending the find method
-    // we keep the reference to the old method in modelFind
-    // and call it in our new find method
 
-    Model.find = function (conditions, fields, options, callback) {
-        var self = this,
-            mq = modelFind.call(self, conditions, fields, options, callback);
-
-        mq.setLocality = function (locality, cb) {
-            var cond = mq._conditions;
-
-            cond.locale = locality.locale;
-            mq.find(cond, cb);
-
-            return mq;
-        };
-
-        return mq;
-    };
-}());
 
 module.exports = Model;

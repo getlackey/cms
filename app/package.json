@@ -52,7 +52,7 @@
         "lackey-mongoose-ensure-object-ids": "0.0.4",
         "lackey-mongoose-ref-validator": "0.0.3",
         "lackey-mongoose-slugify": "0.0.3",
-        "lackey-mongoose-utils": "0.0.2",
+        "lackey-mongoose-utils": "0.0.3",
         "lackey-mongoose-version": "1.0.0",
         "lackey-options-parser": "0.0.4",
         "lackey-request-handler": "0.0.6",

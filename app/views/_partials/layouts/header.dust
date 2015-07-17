@@ -8,24 +8,18 @@
     <section class="top-bar-section">
         <!-- Right Nav Section -->
         <ul class="right">
-            {^isCMS}
-                {@user isAny="admin developer"}
-                    <li><lk-api action="save"></i></lk-api></li>
-                    <li><lk-api action="cancel"></lk-api></li>
-                {/user}
-            {/isCMS}
+            {?isEdit}
+                <li><lk-api action="save"></i></lk-api></li>
+                <li><lk-api action="cancel"></lk-api></li>
+            {/isEdit}
             {>"_partials/account/user-menu" /}
         </ul>
 
         <!-- Left Nav Section -->
-        {^isCMS}
-        {@user isAny="admin developer"}
+        {?isEdit}
         <ul class="left">
-            {!
             <li><button class="fa fa-cog" data-reveal-id="pageSettings"></button></li>
-            !}
         </ul>
-        {/user}
-        {/isCMS}
+        {/isEdit}
     </section>
 </nav>

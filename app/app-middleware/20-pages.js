@@ -22,6 +22,10 @@ module.exports = function (server) {
     // Checks if a request could be a page before trying 
     // to match any other controller route.
     server.use(function (req, res, next) {
+        if (req.method !== 'GET') {
+            return next();
+        }
+
         Page
             .findOne({
                 path: req.url.replace(/^\//, '')

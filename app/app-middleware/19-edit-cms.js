@@ -20,7 +20,7 @@
 module.exports = function (server) {
     //set Language
     server.use(function (req, res, next) {
-        var isCMS = /^\/cms\//.test(req.originalUrl),
+        var isCMS = /^\/cms\//.test(req.url),
             isEdit = false;
 
         if (res.user && res.user.isAny('admin developer')) {

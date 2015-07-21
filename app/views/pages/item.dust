@@ -3,11 +3,11 @@
 {<body}
 <div class="row">
    <div class="small-10 small-offset-1 medium-8 medium-offset-2 columns">
-        <h1>{title}</h1>
+        <h1>{@var name="pages.{.id}.title" placeholder="Title" type="text" /}</h1>
 
 		<div class="row">
 		   	<div>
-				{@var name="pages.{.id}.body.excerpt" placeholder="Excerpt" type="text" /}
+				{@var name="pages.{.id}.body.excerpt" placeholder="Excerpt" type="richtext" /}
 		   	</div>
 		</div>
         

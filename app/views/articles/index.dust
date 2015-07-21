@@ -1,0 +1,14 @@
+{>"layouts/master" /}
+
+{<body}
+<div class="row">
+   <div class="small-10 small-offset-1 medium-8 medium-offset-2 columns">
+        <h1>Articles</h1>
+        <ul>
+        	{#items}
+	        <li><a href="{baseUrl}/{locality.language}/{locality.country}/articles/{slug}">{title}</a></li>
+        	{/items}
+        </ul>
+    </div>
+</div>
+{/body}

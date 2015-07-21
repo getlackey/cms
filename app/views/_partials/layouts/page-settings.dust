@@ -24,7 +24,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <a class="download-button" href="/api/v1/{url.pathname[0]}/{url.pathname[1]}.json?pretty=true" download="{url.pathname[1]}.json">Download JSON</a>
+            <a class="download-button" href="{url}.json?pretty=true" download="{url.pathname[1]}.json">Download JSON</a>
         </div>
     </div>
     {/id}

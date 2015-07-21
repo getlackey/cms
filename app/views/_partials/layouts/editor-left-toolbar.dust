@@ -21,6 +21,14 @@
 					<i class="fa fa-newspaper-o"></i>
 				</a>
 			</li>
+
+			<li>
+				<a href="cms/articles">
+					<span>Articles</span>
+					<i class="fa fa-file-text"></i>
+				</a>
+			</li>
+
 			<li>
 				<a href="cms/tags">
 					<span>Tags</span>

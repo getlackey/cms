@@ -11,7 +11,8 @@ module.exports = function browserify(grunt) {
         build: {
             files: grunt.file.expandMapping('public/js/*.js', '../htdocs/js/', {
                 flatten: true,
-                ext: '.js'
+                ext: '.js',
+                paths: ['./node_modules', './public/js/']
             }),
             options: {
                 watch: false,

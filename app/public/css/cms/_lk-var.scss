@@ -13,40 +13,38 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
-
 lk-var {
+    position: relative;
+    display: block;
+    
+    > .placeholder{
+        position: absolute;
+        top:0;
+        left:0;
+    }
+
     > .placeholder, > .input {
-        display: none;
+        position: absolute;
+        left: -10000px;
     }
 
     &.no-data {
         > .value, > .input {
-            display: none;
+            position: absolute;
+            left: -10000px;
         }
         > .placeholder {
-            display: initial;
+            position: static;
         }
     }
 
     &.edit {
         > .placeholder, > .value {
-            display: none;
+            position: absolute;
+            left: -10000px;
         }
         > .input {
-            display: initial;
-        }
-    }
-}
-
-.position {
-    lk-var {
-        > .placeholder,
-        > .value {
-            display: none;
-        }
-
-        > .input {
-            display: initial;
+            position: static;
         }
     }
 }

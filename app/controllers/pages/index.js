@@ -18,7 +18,7 @@ var config = require('config'),
 
 cms.register({
     controller: 'pages',
-    columns: 'title locale path createdAt'
+    columns: 'title locale path author.email:Author createdAt'
 });
 
 /**
@@ -83,7 +83,7 @@ module.exports = function (router) {
                 .find(o.find())
                 .setLocality(o.req.locality)
                 .checkAcl(o.res.user)
-                .select(o.select('title slug path'))
+                .select(o.select('title slug path author'))
                 .sort(o.sort('-_id'))
                 .limit(o.limit(10))
                 .skip(o.skip())
@@ -148,7 +148,9 @@ module.exports = function (router) {
         handler(handlerOptions, function (o) {
             o.getBody().then(function (doc) {
                 Page
-                    .create(doc)
+                    .create(merge(doc, {
+                        author: o.res.user
+                    }))
                     .then(o.formatOutput('_id:id'))
                     .then(o.handleOutput())
                     .then(o.handle404(), o.handleError());
@@ -184,7 +186,9 @@ module.exports = function (router) {
                         .findOne(o.getFilter('id:ObjectId(_id)'))
                         .exec()
                         .then(o.handle404())
-                        .then(mongooseUtils.update(doc))
+                        .then(mongooseUtils.update(merge(doc, {
+                            author: o.res.user
+                        })))
                         .then(mongooseUtils.save)
                         .then(o.formatOutput('_id:id'))
                         .then(o.handleOutput())

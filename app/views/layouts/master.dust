@@ -30,7 +30,6 @@
                 </div>
             </div>
         </div>
-        
         {>"_partials/layouts/page-settings" /}
         {>"_partials/layouts/scripts" /}
 

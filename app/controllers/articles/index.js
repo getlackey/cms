@@ -18,7 +18,7 @@ var config = require('config'),
 
 cms.register({
     controller: 'articles',
-    columns: 'title locale author.email:Author createdAt'
+    columns: 'title slug createdAt'
 });
 
 /**
@@ -81,7 +81,6 @@ module.exports = function (router) {
         handler(handlerOptions, function (o) {
             Article
                 .find(o.find())
-                .setLocality(o.req.locality)
                 .checkAcl(o.res.user)
                 .select(o.select('title slug'))
                 .sort(o.sort('-_id'))
@@ -135,7 +134,7 @@ module.exports = function (router) {
      *       parameters:
      *         - name: body
      *           in: body
-     *           description: The item data. May be provided as a JSON body, an uploaded JSON file or as formData
+     *           description: The item data.May be provided as a JSON body,    an uploaded JSON file or as formData
      *           required: true
      *           schema:
      *             $ref: '#/definitions/Article'

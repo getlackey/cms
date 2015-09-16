@@ -56,8 +56,7 @@ var path = require('path'),
 
 cms.register({
     controller: 'media',
-    columns: 'url mimetype size createdAt',
-    hasLocale: false
+    columns: 'url mimetype size createdAt'
 });
 
 /**

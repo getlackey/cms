@@ -33,6 +33,8 @@ module.exports = function (server) {
             .lean(true)
             .exec()
             .then(function (doc) {
+                // rewriting URL so the pages controller is able to 
+                // handle it
                 if (doc) {
                     req.url = '/pages' + req.url;
                 }

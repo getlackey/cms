@@ -17,13 +17,9 @@
 */
 
 
-var config = require('config'),
-    auth = require('../lib/auth');
+var config = require('config');
 
 module.exports = function (server) {
-    //loads user details if logged in
-    server.use(auth.checkLoggedIn());
-
     server.use(function (req, res, next) {
         var locals = res.locals,
             url = require('url');

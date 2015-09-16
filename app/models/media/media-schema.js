@@ -19,7 +19,6 @@
 var mongoose = require('mongoose'),
     config = require('config'),
     optionsParser = require('lackey-options-parser'),
-    locales = optionsParser(config.get('locales')),
     Schema = mongoose.Schema;
 
 module.exports = {

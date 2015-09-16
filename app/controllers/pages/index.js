@@ -18,7 +18,7 @@ var config = require('config'),
 
 cms.register({
     controller: 'pages',
-    columns: 'title locale path author.email:Author createdAt'
+    columns: 'title path createdAt'
 });
 
 /**
@@ -81,7 +81,6 @@ module.exports = function (router) {
         handler(handlerOptions, function (o) {
             Page
                 .find(o.find())
-                .setLocality(o.req.locality)
                 .checkAcl(o.res.user)
                 .select(o.select('title slug path author'))
                 .sort(o.sort('-_id'))

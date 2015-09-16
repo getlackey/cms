@@ -1,4 +1,4 @@
-/*jslint node:true, nomen: true */
+/*jslint node:true, unparam:true */
 'use strict';
 /*
     Copyright 2015 Enigma Marketing Services Limited
@@ -16,29 +16,10 @@
     limitations under the License.
 */
 
-var mongoose = require('mongoose'),
-    config = require('config'),
-    optionsParser = require('lackey-options-parser'),
-    tagTypes = optionsParser(require('./tag-types.json')),
-    Schema = mongoose.Schema;
 
-module.exports = {
-    title: {
-        type: String,
-        required: true
-    },
-    slug: {
-        type: String,
-        unique: true
-    },
-    type: {
-        type: String,
-        'enum': tagTypes.getKeys(),
-        'default': 'cms',
-        indexed: true
-    },
-    author: {
-        type: Schema.Types.ObjectId,
-        ref: 'user'
-    }
+var auth = require('../lib/auth');
+
+module.exports = function (server) {
+    //loads user details if logged in
+    server.use(auth.checkLoggedIn());
 };

@@ -19,14 +19,9 @@
 var mongoose = require('mongoose'),
     config = require('config'),
     optionsParser = require('lackey-options-parser'),
-    locales = optionsParser(config.get('locales')),
     Schema = mongoose.Schema;
 
 module.exports = {
-    groupId: { // identifies the translations of the same article
-        type: Schema.Types.ObjectId,
-        index: true
-    },
     title: {
         type: String,
         required: true
@@ -34,14 +29,9 @@ module.exports = {
     slug: {
         type: String
     },
-    locale: {
-        type: String,
-        required: true,
-        'enum': locales.getKeys(),
-        'default': config.get('defaultLocale')
-    },
     author: {
-        type: Schema.Types.Mixed
+        type: Schema.Types.ObjectId,
+        ref: 'user'
     },
     isPublished: {
         type: Boolean,

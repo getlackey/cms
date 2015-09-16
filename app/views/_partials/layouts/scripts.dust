@@ -1,9 +1,9 @@
 {?isEdit}
-	<script src="alloy-editor/alloy-editor-all.js"></script>
+	<script src="js-libs/alloy-editor/alloy-editor-all.js"></script>
 {/isEdit}
 
 {@if cond=" '{isEdit}' === 'true' || '{isCMS}' === 'true' "}
     <script src="js/admin.js"></script>
-{:else}
-    <script src="js/main.js"></script>
 {/if}
+
+<script src="js/main.js"></script>

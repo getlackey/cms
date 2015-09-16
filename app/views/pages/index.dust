@@ -6,7 +6,7 @@
         <h1>Pages</h1>
         <ul>
         	{#items}
-	        <li><a href="{baseUrl}/{locality.language}/{locality.country}/{path}">{title}</a></li>
+	        <li><a href="{baseUrl}/{path}">{title}</a></li>
         	{/items}
         </ul>
     </div>

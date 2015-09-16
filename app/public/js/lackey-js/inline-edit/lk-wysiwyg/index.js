@@ -30,13 +30,12 @@ module.exports = function (app) {
                     return;
                 }
 
-                console.log('new editor');
                 AlloyEditor.editable(element.get(0), {
                     toolbars: {
-                        // add: {
-                        //     buttons: ['image', 'camera', 'hline', 'table'],
-                        //     tabIndex: 2
-                        // },
+                        add: {
+                            buttons: ['image', 'quote', 'h1', 'ul', 'hline', 'table'],
+                            tabIndex: 2
+                        },
                         styles: {
                             selections: [{
                                 name: 'link',
@@ -48,8 +47,14 @@ module.exports = function (app) {
                                 test: AlloyEditor.SelectionTest.image
                             }, {
                                 name: 'text',
-                                buttons: ['bold', 'italic', 'underline', 'link', 'twitter'],
+                                buttons: ['removeFormat', 'bold', 'italic', 'underline', 'link', 'twitter'],
                                 test: AlloyEditor.SelectionTest.text
+                            }, {
+                                name: 'table',
+                                buttons: ['tableRow', 'tableColumn', 'tableCell', 'tableRemove'],
+                                getArrowBoxClasses: AlloyEditor.SelectionGetArrowBoxClasses.table,
+                                setPosition: AlloyEditor.SelectionSetPosition.table,
+                                test: AlloyEditor.SelectionTest.table
                             }],
                             tabIndex: 1
                         }

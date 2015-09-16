@@ -17,9 +17,11 @@
 */
 
 
-var fs = require('fs'),
-    path = require('path'),
-    handler = require('lackey-request-handler');
+var path = require('path'),
+    config = require('config'),
+    merge = require('merge'),
+    handler = require('lackey-request-handler'),
+    Page = require('../models/page');
 
 /**
  * @SwaggerHeader
@@ -41,6 +43,25 @@ var fs = require('fs'),
 module.exports = function (router) {
     router.get('/',
         handler(function (o) {
-            o.res.render('index');
+            var find = {
+                isHomePage: true
+            };
+
+            // hide unpublished items from all other users
+            if (!o.res.user || !o.res.user.isAny('admin developer')) {
+                find = merge(find, {
+                    isPublished: true
+                });
+            }
+
+            Page
+                .findOne(find)
+                .lean(true)
+                .exec()
+                .then(o.formatOutput('_id:id *'))
+                .then(o.handleOutput(function (doc) {
+                    return 'html:' + doc.template + ' json';
+                }))
+                .then(o.handle404(), o.handleError());
         }));
 };

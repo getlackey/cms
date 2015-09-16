@@ -9,6 +9,13 @@
 			</li>
 
 			<li>
+				<a href="{baseUrl}">
+					<span>Home</span>
+					<i class="fa fa-home"></i> 
+				</a>
+			</li>
+
+			<li>
 				<a href="dashboard">
 					<span>Dashboard</span>
 					<i class="fa fa-tachometer"></i>

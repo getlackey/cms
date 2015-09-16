@@ -29,7 +29,7 @@ var mongoose = require('mongoose'),
     Model,
     mongoSchema;
 
-mongoSchema = new Schema(require('./tag-schema'));
+mongoSchema = new Schema(require('./' + schemaName + '-schema'));
 
 mongoSchema.plugin(timestamps);
 mongoSchema.plugin(acl, {
@@ -45,4 +45,5 @@ mongoSchema.plugin(version, {
 });
 
 Model = dbs.main.model(schemaName, mongoSchema);
+
 module.exports = Model;

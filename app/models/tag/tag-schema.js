@@ -20,6 +20,7 @@ var mongoose = require('mongoose'),
     config = require('config'),
     optionsParser = require('lackey-options-parser'),
     locales = optionsParser(config.get('locales')),
+    tagTypes = optionsParser(require('./tag-types.json')),
     Schema = mongoose.Schema;
 
 module.exports = {
@@ -31,13 +32,14 @@ module.exports = {
         type: String,
         unique: true
     },
-    locale: {
+    type: {
         type: String,
-        required: true,
-        'enum': locales.getKeys(),
-        'default': config.get('defaultLocale')
+        'enum': tagTypes.getKeys(),
+        'default': 'cms',
+        indexed: true
     },
     author: {
-        type: Schema.Types.Mixed
+        type: Schema.Types.ObjectId,
+        ref: 'user'
     }
 };

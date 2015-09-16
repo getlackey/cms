@@ -30,6 +30,13 @@
 			</li>
 
 			<li>
+				<a href="cms/media">
+					<span>Media</span>
+					<i class="fa fa-picture-o"></i>
+				</a>
+			</li>
+			
+			<li>
 				<a href="cms/tags">
 					<span>Tags</span>
 					<i class="fa fa-tag"></i>

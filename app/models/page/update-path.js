@@ -19,6 +19,7 @@ var path = require('path');
 
 module.exports = function (next) {
     var self = this;
+
     self.populate('parent', 'path', function (err) {
         var paths;
 

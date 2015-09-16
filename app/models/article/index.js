@@ -23,7 +23,6 @@ var mongoose = require('mongoose'),
     acl = require('lackey-mongoose-acl'),
     slugify = require('lackey-mongoose-slugify'),
     logger = require('../../lib/logger'),
-    mongooseLocality = require('../../lib/mongoose-locality'),
     Schema = mongoose.Schema,
     schemaName = 'article',
     Model,
@@ -31,28 +30,10 @@ var mongoose = require('mongoose'),
 
 mongoSchema = new Schema(require('./article-schema'));
 
-// one language per page group
-mongoSchema.index({
-    groupId: 1,
-    locale: 1
-}, {
-    unique: true
-});
-
-// Slugs are unique for the current locale
-mongoSchema.index({
-    slug: 1,
-    locale: 1
-}, {
-    unique: true
-});
-
-
 mongoSchema.plugin(timestamps);
 mongoSchema.plugin(acl, {
     required: ['admin', 'developer']
 });
-mongoSchema.plugin(mongooseLocality);
 mongoSchema.plugin(slugify, {
     logger: logger
 });
@@ -60,16 +41,6 @@ mongoSchema.plugin(version, {
     suppressVersionIncrement: false,
     collection: schemaName + '-versions',
     logError: true
-});
-
-mongoSchema.pre('validate', function (next) {
-    var self = this;
-
-    if (!self.groupId) {
-        self.groupId = mongoose.Types.ObjectId();
-    }
-
-    next();
 });
 
 Model = dbs.main.model(schemaName, mongoSchema);

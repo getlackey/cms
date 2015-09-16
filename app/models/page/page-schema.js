@@ -27,7 +27,8 @@ module.exports = {
         required: true
     },
     slug: {
-        type: String
+        type: String,
+        unique: true
     },
     path: {
         type: String,
@@ -43,9 +44,20 @@ module.exports = {
     },
     isPublished: {
         type: Boolean,
-        'default': false
+        'default': false,
+        indexed: true
+    },
+    isHomePage: {
+        type: Boolean,
+        required: true,
+        'default': false,
+        indexed: true
     },
     body: {
         type: Schema.Types.Mixed
+    },
+    template: {
+        type: String,
+        'default': 'pages/post'
     }
 };

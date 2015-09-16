@@ -19,11 +19,11 @@
 var mongoose = require('mongoose'),
     version = require('lackey-mongoose-version'),
     timestamps = require('mongoose-timestamp'),
-    dbs = require('../../lib/mongoose-connections'),
+    mongooseRefValidator = require('lackey-mongoose-ref-validator'),
     acl = require('lackey-mongoose-acl'),
     slugify = require('lackey-mongoose-slugify'),
+    dbs = require('../../lib/mongoose-connections'),
     logger = require('../../lib/logger'),
-    mongooseLocality = require('../../lib/mongoose-locality'),
     Schema = mongoose.Schema,
     schemaName = 'page',
     Model,
@@ -31,28 +31,10 @@ var mongoose = require('mongoose'),
 
 mongoSchema = new Schema(require('./page-schema'));
 
-// one language per page group
-mongoSchema.index({
-    groupId: 1,
-    locale: 1
-}, {
-    unique: true
-});
-
-// Slugs are unique for the current locale
-mongoSchema.index({
-    slug: 1,
-    locale: 1
-}, {
-    unique: true
-});
-
-
 mongoSchema.plugin(timestamps);
 mongoSchema.plugin(acl, {
     required: ['admin', 'developer']
 });
-mongoSchema.plugin(mongooseLocality);
 mongoSchema.plugin(slugify, {
     logger: logger
 });
@@ -61,20 +43,15 @@ mongoSchema.plugin(version, {
     collection: schemaName + '-versions',
     logError: true
 });
-
-mongoSchema.pre('validate', function (next) {
-    var self = this;
-
-    if (!self.groupId) {
-        self.groupId = mongoose.Types.ObjectId();
-    }
-
-    next();
+mongoSchema.plugin(mongooseRefValidator, {
+    onDeleteRestrict: [
+        'parent'
+    ]
 });
-mongoSchema.pre('validate', require('./update-path'));
+
+mongoSchema.pre('save', require('./update-path'));
+mongoSchema.pre('save', require('./check-is-homepage'));
 
 Model = dbs.main.model(schemaName, mongoSchema);
-
-
 
 module.exports = Model;

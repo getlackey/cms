@@ -17,8 +17,6 @@
 */
 
 var mongoose = require('mongoose'),
-    config = require('config'),
-    optionsParser = require('lackey-options-parser'),
     Schema = mongoose.Schema;
 
 module.exports = {
@@ -27,7 +25,8 @@ module.exports = {
         required: true
     },
     slug: {
-        type: String
+        type: String,
+        unique: true
     },
     author: {
         type: Schema.Types.ObjectId,

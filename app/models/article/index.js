@@ -19,9 +19,11 @@
 var mongoose = require('mongoose'),
     version = require('lackey-mongoose-version'),
     timestamps = require('mongoose-timestamp'),
-    dbs = require('../../lib/mongoose-connections'),
     acl = require('lackey-mongoose-acl'),
     slugify = require('lackey-mongoose-slugify'),
+    ensureObjectIds = require('lackey-mongoose-ensure-object-ids'),
+    mongooseRefValidator = require('lackey-mongoose-ref-validator'),
+    dbs = require('../../lib/mongoose-connections'),
     logger = require('../../lib/logger'),
     Schema = mongoose.Schema,
     schemaName = 'article',
@@ -41,6 +43,14 @@ mongoSchema.plugin(version, {
     suppressVersionIncrement: false,
     collection: schemaName + '-versions',
     logError: true
+});
+mongoSchema.plugin(ensureObjectIds, {
+    'tag': 'slug ids'
+});
+mongoSchema.plugin(mongooseRefValidator, {
+    onDeleteRestrict: [
+        'tags'
+    ]
 });
 
 Model = dbs.main.model(schemaName, mongoSchema);

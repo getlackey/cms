@@ -32,6 +32,10 @@ module.exports = {
         type: Schema.Types.ObjectId,
         ref: 'user'
     },
+    tags: [{
+        type: Schema.Types.ObjectId,
+        ref: 'tag'
+    }],
     isPublished: {
         type: Boolean,
         'default': false

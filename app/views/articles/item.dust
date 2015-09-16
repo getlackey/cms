@@ -1,5 +1,16 @@
 {>"layouts/master" /}
 
+{<visibility-switch}
+    {>"_partials/layouts/visibility-switch" entity="blog" /}
+{/visibility-switch}
+
+
+{<page-settings}
+    <h2>Tags</h2>
+    {@var name="articles.{.id}:tags" type="list" /}
+    <lk-search name="articles.{.id}:tags" resource="tags" match="title"></lk-search>
+{/page-settings}
+
 {<body}
 <div class="row">
    <div class="small-10 small-offset-1 medium-8 medium-offset-2 columns">

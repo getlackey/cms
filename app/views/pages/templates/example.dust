@@ -1,0 +1,16 @@
+{>"layouts/master" /}
+
+{<body}
+<div class="row">
+   <div class="small-10 small-offset-1 medium-8 medium-offset-2 columns">
+        {>"_partials/pages/blocks/header" /} 
+		
+		<div class="blocks">
+			{>"_partials/pages/blocks/tabs" 
+				lkVar="pages.{id}:body.blocks.1" data=body.blocks[1] 
+				numTabs=4
+			/}
+		</div>
+    </div>
+</div>
+{/body}

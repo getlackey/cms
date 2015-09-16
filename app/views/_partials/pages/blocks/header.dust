@@ -1,0 +1,8 @@
+<h1>{@var name="pages.{.id}:title" placeholder="Title" type="text" /}</h1>
+<p>{@formatDate val=createdAt month="long" day="numeric" year="numeric"/}</p>
+
+<div class="row">
+   	<div>
+		{@var name="pages.{.id}:body.excerpt" placeholder="Excerpt" type="textarea" /}
+   	</div>
+</div>

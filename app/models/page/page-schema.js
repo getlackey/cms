@@ -58,6 +58,6 @@ module.exports = {
     },
     template: {
         type: String,
-        'default': 'pages/post'
+        'default': 'default'
     }
 };

@@ -3,17 +3,17 @@
 {<body}
 <div class="row">
    <div class="small-10 small-offset-1 medium-8 medium-offset-2 columns">
-        <h1>{@var name="[self].title" placeholder="Title" type="text" /}</h1>
+        <h1>{@var name="[self]:title" placeholder="Title" type="text" /}</h1>
 
 		<div class="row">
 		   	<div>
-				{@var name="[self].body.excerpt" placeholder="Excerpt" type="text" /}
+				{@var name="[self]:body.excerpt" placeholder="Excerpt" type="text" /}
 		   	</div>
 		</div>
         
 		<div class="row">
 		   	<div>
-				{@var name="[self].body.content" placeholder="Content" type="richtext" /}
+				{@var name="[self]:body.content" placeholder="Content" type="richtext" /}
 		   	</div>
 		</div>
     </div>

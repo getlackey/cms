@@ -148,7 +148,7 @@ module.exports = function (router) {
             o.getBody().then(function (doc) {
                 Article
                     .create(merge(doc, {
-                        author: o.res.user
+                        author: o.res.user && o.res.user._id
                     }))
                     .then(o.formatOutput('_id:id'))
                     .then(o.handleOutput())
@@ -186,7 +186,7 @@ module.exports = function (router) {
                         .exec()
                         .then(o.handle404())
                         .then(mongooseUtils.update(merge(doc, {
-                            author: o.res.user
+                            author: o.res.user && o.res.user._id
                         })))
                         .then(mongooseUtils.save)
                         .then(o.formatOutput('_id:id'))

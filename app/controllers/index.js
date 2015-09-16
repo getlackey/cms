@@ -60,7 +60,7 @@ module.exports = function (router) {
                 .exec()
                 .then(o.formatOutput('_id:id *'))
                 .then(o.handleOutput(function (doc) {
-                    return 'html:' + doc.template + ' json';
+                    return 'html:pages/templates/' + doc.template + ' json';
                 }))
                 .then(o.handle404(), o.handleError());
         }));

@@ -104,7 +104,7 @@ module.exports = function (router) {
      *       parameters:
      *         - name: id
      *           in: path
-     *           description: The item Identifier (ObjectID, Slug or one of the IDs)
+     *           description: The item Identifier (ObjectID or Path)
      *           required: true
      *           type: string
      *       responses:
@@ -113,6 +113,7 @@ module.exports = function (router) {
      *         400:
      *           description: Invalid ID format
      */
+    // Regex as pages can be searched by path including /
     router.get('/:id([a-z0-9A-Z-\/]*)',
         handler(handlerOptions, function (o) {
             Page
@@ -121,7 +122,9 @@ module.exports = function (router) {
                 .exec()
                 .then(Page.checkAcl(o.res.user))
                 .then(o.formatOutput('_id:id *'))
-                .then(o.handleOutput('html:pages/item json'))
+                .then(o.handleOutput(function (doc) {
+                    return 'html:pages/templates/' + doc.template + ' json';
+                }))
                 .then(o.handle404(), o.handleError());
         }));
     /**

@@ -82,6 +82,7 @@ cms.getData = function (controller) {
     data.entity = controller;
     data.title = makeTitle(controller);
     data.form = objDefs.form;
+    data.form.useAjax = true;
     data.columns = objDefs.columns;
     data.hasLocale = objDefs.hasLocale;
 

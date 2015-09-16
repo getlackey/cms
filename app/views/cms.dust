@@ -1,70 +1,73 @@
 {>"layouts/master" /}
 
 {<body}
-	<div class="row heading-block">
-		<div class="small-12 columns" ng-cloak>
-			<h1>{title}</h1>
+
+	<div class="container">
+		<div class="row cms-heading-block">
+			<div class="col-md-12" ng-cloak>
+				<h1>{title}</h1>
+				<div><button class="add vg-btn btn-dark-blue" ng-click="toggleFormVisibility($event)"><i class="fa fa-plus"></i> Add New</button></div>
+			</div>
 		</div>
-		<div class="small-12 columns"><hr></div>
-	</div>
 
-	<div class="row">
-		<div class="small-12 columns">
-			<div><button class="add" ng-click="toggleFormVisibility($event)">Add New <i class="fa fa-plus"></i></button></div>
-		</div>
-	</div>
+		<div class="row">
+			<div class="col-md-12">
 
-	<div class="row">
-		<div class="small-12 columns">
-
-			<div class="add-item" ng-show="showForm" ng-cloak>
-				{?form.items}
-				{> "_partials/form/head" /}
-				<!-- <h3>Add New Details</h3> -->
-				<div class="row add-item">
-					<div class="small-12 medium-6 columns">
-						{#form.items}
-						    {#type}
-						        {> "_partials/form/{type}" /}
-						    {:else}
-						        <div>Error: {err}</div>
-						    {/type}
-						{/form.items}
-						<button class="save" ng-click="submitForm($event)">Save</button>
-						<button class="cancel" ng-click="resetForm($event)">Cancel</button>
-						{> "_partials/form/foot" /}
-						{/form.items}
+				<div class="add-item" ng-show="showForm" ng-cloak>
+					{?form.items}
+					{> "_partials/form/head" /}
+					<div class="row add-item">
+						<div class="col-md-12">
+							{#form.items}
+							    {#type}
+							        {> "_partials/form/{type}" /}
+							    {:else}
+							        <div>Error: {err}</div>
+							    {/type}
+							{/form.items}
+							<button class="vg-btn btn-dark-blue save" {?form.useAjax}ng-click="submitForm($event)"{/form.useAjax}>Save</button>
+							<button class="vg-btn btn-teal cancel" ng-click="resetForm($event)">Cancel</button>
+							{> "_partials/form/foot" /}
+							{/form.items}
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="row">
-				<div class="small-12 medium-4 columns">
-				{?hasLocale}
-                    {@options resource="/config/locales.json"}
-                    {@gt key=items.length value=1}
-					<select class="search locale" ng-model="locale" ng-name="locale">
-                        {#items}
-                            <option value="{key}" {@eq key=key value=locality.locale}selected{/eq}>{value} ({key})</option>
-                        {/items}
-					</select>
-					{/gt}
-                    {/options}
-				{/hasLocale}
+				<div class="row option-fields">
+					<div class="col-md-12" ng-cloak>
+					{?hasLocale}
+						<div ng-if="locale === 'de_DE'">
+							<p><a href="en/GB/missing-l10n/{entity}">Need to convert a document from German to English?</a></p>
+						</div>
+						<div ng-if="locale === 'en_GB'">
+							<p><a href="de/DE/missing-l10n/{entity}">Need to convert a document from English to German?</a></p>
+						</div>
+
+	                    {@options resource="/config/locales.json"}
+	                    {@gt key=items.length value=1}
+						<select class="search locale" ng-model="locale" ng-name="locale">
+	                        {#items}
+	                            <option value="{key}" {@eq key=key value=locality.locale}selected{/eq}>{value} ({key})</option>
+	                        {/items}
+						</select>
+						{/gt}
+	                    {/options}
+					{/hasLocale}
+					</div>
+					<div class="col-md-12">
+						<input type="text" ng-model="filterOptions.filterText" ng-name="filterOptions.filterText" class="search right" placeholder="filter list items"/>
+					</div>
 				</div>
-				<div class="small-12 medium-8 columns">
-					<input type="text" ng-model="filterOptions.filterText" ng-name="filterOptions.filterText" class="search right" placeholder="filter list items"/>
+
+				
+
+				<div class="row data-table">
+					<div class="col-md-12">
+						<div id="main-grid" data-ng-grid="gridOptions" data-columns="{columns}"></div>
+					</div>
 				</div>
+
 			</div>
-
-			
-
-			<div class="row data-table">
-				<div class="small-12 columns">
-					<div id="main-grid" data-ng-grid="gridOptions" data-columns="{columns}"></div>
-				</div>
-			</div>
-
 		</div>
 	</div>
 

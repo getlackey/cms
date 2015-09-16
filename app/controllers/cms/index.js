@@ -54,6 +54,32 @@ module.exports = function (router) {
             o.handleOutput('html:cms json')(data);
         }));
 
+    router.get('/media',
+        auth.isAny('admin developer'),
+        handler(function (o) {
+            var entity = 'media',
+                data;
+
+            data = cms.getData(entity);
+
+            if (!data) {
+                return o.next();
+            }
+
+            data.form = {
+                action: "media",
+                useAjax: false,
+                enctype: 'multipart/form-data',
+                items: [{
+                    required: true,
+                    name: "file",
+                    label: "File",
+                    type: "file"
+                }]
+            };
+            o.handleOutput('html:cms json')(data);
+        }));
+
     // generic loader
     router.get('/:entity',
         auth.isAny('admin developer'),

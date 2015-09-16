@@ -59,50 +59,7 @@ cfg.mailer = {
     // OR.... check the module options
 };
 
-/*
-    LOCALES
-
-    We should use the following format:
-
-        ["en_GB:English", "de_DE:German"]
-
-    The first two letters are the language and should always be lower-case 
-    and the following two the country, always upper-case. Both parts need to be
-    defined according to http://en.wikipedia.org/wiki/Locale
-
-    At this moment, we don't support encoding or modifiers.
-
-    In case someone just provides the language and not the country we 
-    will use the first locale from the list that has a matching language.
-*/
-
-// use lackey-options format
-// https://www.npmjs.com/package/lackey-options-parser
-cfg.locales = require('./locales.json');
-cfg.defaultLocale = 'en_GB';
-
 cfg.slugFormat = 'ascii'; //ascii, utf8
-
-/*
-    We need to create mappings for controller and template names. Data in the database
-    (eg. articles) will be filtered by req.locality and slug.
-*/
-cfg.localisedRoutes = {};
-cfg.localisedRoutes.pt_PT = [
-    '^/paginas(/?.*) /pages$1'
-];
-
-/* 
-    Issues a 302 redirect on these routes
-    URLS shouldn't have spaces so it's safe to split the
-    rewrite rule by space
-*/
-cfg.redirectRoutes = [
-    '^/en/GB/?(.*) /$1',
-    '^/en/?(.*) /$1',
-
-    '^/pt/PT/pages(/?.*) /pt/PT/paginas$1'
-];
 
 /*
     In the initial phases of a project being able to serve

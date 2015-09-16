@@ -20,6 +20,8 @@
 var config = require('config'),
     handler = require('lackey-request-handler'),
     mongooseUtils = require('lackey-mongoose-utils'),
+    errors = require('common-errors'),
+    merge = require('merge'),
     cms = require('../../lib/cms'),
     auth = require('../../lib/auth'),
     Tag = require('../../models/tag'),
@@ -33,7 +35,7 @@ var config = require('config'),
 
 cms.register({
     controller: 'tags',
-    columns: 'title slug locale createdAt'
+    columns: 'title slug type createdAt'
 });
 
 /**

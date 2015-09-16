@@ -13,3 +13,5 @@ coverage
 tmp
 
 *.sublime-*
+
+app/uploads

@@ -160,13 +160,22 @@ module.exports = function (router) {
     router.post('/',
         auth.isAny('admin developer'),
         handler(handlerOptions, function (o) {
-            o.getBody().then(function (doc) {
-                Tag
-                    .create(doc)
-                    .then(o.formatOutput('_id:id'))
-                    .then(o.handleOutput())
-                    .then(o.handle404(), o.handleError());
-            });
+            o.getBody()
+                .then(function (doc) {
+                    //only developers manage system tags
+                    if (doc.type === 'system' && !o.res.user.is('developer')) {
+                        return o.next(new errors.HttpStatusError(403));
+                    }
+
+                    Tag
+                        .create(merge(doc, {
+                            author: o.res.user && o.res.user._id
+                        }))
+                        .then(o.formatOutput('_id:id'))
+                        .then(o.handleOutput())
+                        .then(o.handle404(), o.handleError());
+                })
+                .then(null, o.handleError());
         }));
     /**
      * @SwaggerPath
@@ -194,11 +203,18 @@ module.exports = function (router) {
         handler(handlerOptions, function (o) {
             o.getBody()
                 .then(function (doc) {
+                    //only developers manage system tags
+                    if (doc.type === 'system' && !o.res.user.is('developer')) {
+                        return o.next(new errors.HttpStatusError(403));
+                    }
+
                     Tag
                         .findOne(o.getFilter('id:ObjectId(_id)'))
                         .exec()
                         .then(o.handle404())
-                        .then(mongooseUtils.update(doc))
+                        .then(mongooseUtils.update(merge(doc, {
+                            author: o.res.user && o.res.user._id
+                        })))
                         .then(mongooseUtils.save)
                         .then(o.formatOutput('_id:id'))
                         .then(o.handleOutput())

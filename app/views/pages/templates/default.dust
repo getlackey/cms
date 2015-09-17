@@ -6,7 +6,7 @@
         {>"_partials/pages/blocks/header" /} 
 		
 		<div class="blocks">
-			{>"_partials/pages/blocks/tabs" 
+			{>"_partials/pages/blocks/tabs/index" 
 				lkVar="pages.{id}:body.blocks.1" data=body.blocks[1] 
 				numTabs=2
 			/}

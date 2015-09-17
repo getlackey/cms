@@ -17,9 +17,6 @@
 */
 
 var mongoose = require('mongoose'),
-    config = require('config'),
-    optionsParser = require('lackey-options-parser'),
-    tagTypes = optionsParser(require('./tag-types.json')),
     Schema = mongoose.Schema;
 
 module.exports = {
@@ -31,11 +28,8 @@ module.exports = {
         type: String,
         unique: true
     },
-    type: {
-        type: String,
-        'enum': tagTypes.getKeys(),
-        'default': 'cms',
-        indexed: true
+    body: {
+        type: Schema.Types.Mixed
     },
     author: {
         type: Schema.Types.ObjectId,

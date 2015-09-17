@@ -35,7 +35,6 @@ module.exports = {
     size: Number,
     author: {
         type: Schema.Types.ObjectId,
-        ref: 'user',
-        required: true
+        ref: 'user'
     }
 };

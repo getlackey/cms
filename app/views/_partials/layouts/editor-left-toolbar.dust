@@ -35,6 +35,15 @@
 					<i class="fa fa-file-text"></i>
 				</a>
 			</li>
+			
+			{@user is="developer"}
+			<li>
+				<a href="cms/shared-content">
+					<span>Shared Content</span>
+					<i class="fa fa-file-code-o"></i>
+				</a>
+			</li>
+			{/user}
 
 			<li>
 				<a href="cms/media">

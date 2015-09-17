@@ -13,4 +13,8 @@
     <h2>Tags</h2>
     {@var name="pages.{.id}:tags" type="list" /}
     <lk-search name="pages.{.id}:tags" resource="tags" match="title"></lk-search>
+
+    <h2>Template</h2>
+    <p>The page needs to be reloaded after save.</p>
+    {@var name="pages.{.id}:template" type="select" options="/models/page/templates.json"/}
 {/page-settings}

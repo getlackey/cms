@@ -1,4 +1,4 @@
-/*jslint node:true, browser:true, nomen:true */
+/*jslint node:true, nomen: true */
 'use strict';
 /*
     Copyright 2015 Enigma Marketing Services Limited
@@ -16,24 +16,24 @@
     limitations under the License.
 */
 
-var lackeyJs = require('./lackey-js'),
-    jsonRPC = require('./json-rpc'),
-    loadMore = require('./load-more'),
-    $ = window.jQuery,
-    appEdit,
-    appCMS;
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
 
-appEdit = lackeyJs.edit();
-require('./menu-management/controller.js')(appEdit);
-
-appCMS = lackeyJs.cms();
-
-jsonRPC();
-// hides load-more buttons if they will return 
-// zero results
-loadMore();
-
-//hide lk-api buttons if no instance of lk-var was found
-if ($('lk-var').length === 0) {
-    $('lk-api').hide();
-}
+module.exports = {
+    title: {
+        type: String,
+        required: true
+    },
+    slug: {
+        type: String,
+        unique: true
+    },
+    items: [{
+        label: String,
+        url: String
+    }],
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'user'
+    }
+};

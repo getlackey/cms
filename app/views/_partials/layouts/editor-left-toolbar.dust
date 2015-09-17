@@ -43,6 +43,12 @@
 					<i class="fa fa-file-code-o"></i>
 				</a>
 			</li>
+			<li>
+				<a href="cms/menus">
+					<span>Menus</span>
+					<i class="fa fa-th-list"></i>
+				</a>
+			</li>
 			{/user}
 
 			<li>

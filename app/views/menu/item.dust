@@ -1,0 +1,23 @@
+{>"layouts/master" /}
+
+{<body}
+<div class="row">
+   <div class="small-10 small-offset-1 medium-8 medium-offset-2 columns">
+        <h1>Menu {title}</h1>
+		<div class="menu-items" ng-controller="menuManagement" ng-cloak>
+	    	{@var name="menus.{.id}:items" type="list"}
+	    		<a href="{{ item.url }}" target="_blank">{{ item.label }}</a> 
+	    		<i class="fa fa-times delete-item" title="Delete"></i>
+	    		<i class="fa fa-pencil edit-item" title="Edit" ng-click="editItem(item)"></i>
+	    		<i class="fa fa-chevron-down" ng-click="moveItem(item, +1)"></i>
+	    		<i class="fa fa-chevron-up" ng-click="moveItem(item, -1)"></i>
+	    	{/var}
+
+	    	<h2>Edit Item</h2>
+	    	Label <input type="text" name="label" ng-model="item.label"/><br>
+	    	URL <input type="text" name="url" ng-model="item.url"/><br>
+	    	<button ng-click="addItem()">Save</button>
+	    </div>
+    </div>
+</div>
+{/body}

@@ -19,6 +19,7 @@
 var mongoose = require('mongoose'),
     config = require('config'),
     optionsParser = require('lackey-options-parser'),
+    templates = optionsParser(require('./templates')),
     Schema = mongoose.Schema;
 
 module.exports = {
@@ -44,7 +45,8 @@ module.exports = {
     }],
     author: {
         type: Schema.Types.ObjectId,
-        ref: 'user'
+        ref: 'user',
+        required: true
     },
     isPublished: {
         type: Boolean,
@@ -62,6 +64,7 @@ module.exports = {
     },
     template: {
         type: String,
-        'default': 'default'
+        'default': 'default',
+        'enum': templates.getKeys()
     }
 };

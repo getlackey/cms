@@ -22,7 +22,8 @@ var mongoose = require('mongoose'),
 module.exports = {
     author: {
         type: Schema.Types.ObjectId,
-        ref: 'user'
+        ref: 'user',
+        required: true
     },
     method: String,
     url: String,

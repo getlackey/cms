@@ -1,0 +1,16 @@
+{! 
+	This file shoud be required by a template. 
+	Take a look at ./templates/default.dust
+!}
+
+{>"layouts/master" /}
+
+{<visibility-switch}
+    {>"_partials/layouts/visibility-switch" entity="blog" /}
+{/visibility-switch}
+
+{<page-settings}
+    <h2>Tags</h2>
+    {@var name="pages.{.id}:tags" type="list" /}
+    <lk-search name="pages.{.id}:tags" resource="tags" match="title"></lk-search>
+{/page-settings}

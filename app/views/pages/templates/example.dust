@@ -1,4 +1,4 @@
-{>"layouts/master" /}
+{>"pages/post" /}
 
 {<body}
 <div class="row">

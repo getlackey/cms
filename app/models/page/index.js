@@ -20,6 +20,8 @@ var mongoose = require('mongoose'),
     version = require('lackey-mongoose-version'),
     timestamps = require('mongoose-timestamp'),
     mongooseRefValidator = require('lackey-mongoose-ref-validator'),
+    ensureObjectIds = require('lackey-mongoose-ensure-object-ids'),
+    mongooseRefValidator = require('lackey-mongoose-ref-validator'),
     acl = require('lackey-mongoose-acl'),
     slugify = require('lackey-mongoose-slugify'),
     dbs = require('../../lib/mongoose-connections'),
@@ -46,6 +48,14 @@ mongoSchema.plugin(version, {
 mongoSchema.plugin(mongooseRefValidator, {
     onDeleteRestrict: [
         'parent'
+    ]
+});
+mongoSchema.plugin(ensureObjectIds, {
+    'tag': 'slug ids'
+});
+mongoSchema.plugin(mongooseRefValidator, {
+    onDeleteRestrict: [
+        'tags'
     ]
 });
 

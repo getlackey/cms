@@ -118,6 +118,7 @@ module.exports = function (router) {
         handler(handlerOptions, function (o) {
             Page
                 .findOne(o.getFilter('id:ObjectId(_id),path'))
+                .populate('tags', 'slug title')
                 .lean(true)
                 .exec()
                 .then(Page.checkAcl(o.res.user))
@@ -148,15 +149,17 @@ module.exports = function (router) {
     router.post('/',
         auth.isAny('admin developer'),
         handler(handlerOptions, function (o) {
-            o.getBody().then(function (doc) {
-                Page
-                    .create(merge(doc, {
-                        author: o.res.user && o.res.user._id
-                    }))
-                    .then(o.formatOutput('_id:id'))
-                    .then(o.handleOutput())
-                    .then(o.handle404(), o.handleError());
-            });
+            o.getBody()
+                .then(Page.ensureObjectIds)
+                .then(function (doc) {
+                    Page
+                        .create(merge(doc, {
+                            author: o.res.user && o.res.user._id
+                        }))
+                        .then(o.formatOutput('_id:id'))
+                        .then(o.handleOutput())
+                        .then(o.handle404(), o.handleError());
+                });
         }));
     /**
      * @SwaggerPath
@@ -183,6 +186,7 @@ module.exports = function (router) {
         auth.isAny('admin developer'),
         handler(handlerOptions, function (o) {
             o.getBody()
+                .then(Page.ensureObjectIds)
                 .then(function (doc) {
                     Page
                         .findOne(o.getFilter('id:ObjectId(_id)'))

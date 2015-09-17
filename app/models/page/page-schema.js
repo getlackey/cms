@@ -38,6 +38,10 @@ module.exports = {
         type: Schema.Types.ObjectId,
         ref: 'page'
     },
+    tags: [{
+        type: Schema.Types.ObjectId,
+        ref: 'tag'
+    }],
     author: {
         type: Schema.Types.ObjectId,
         ref: 'user'

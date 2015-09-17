@@ -16,10 +16,16 @@
         </ul>
 
         <!-- Left Nav Section -->
-        {?isEdit}
+        
         <ul class="left">
-            <li><button class="fa fa-cog" data-reveal-id="pageSettings"></button></li>
+            {?isEdit}
+                <li><button class="fa fa-cog" data-reveal-id="pageSettings"></button></li>
+            {/isEdit}
+            {@api resource="{baseUrl}/menus/main?jwt={jwt}"}
+                {#items}
+                    <li><a href="{url}">{label}</a></li>
+                {/items}
+            {/api}
         </ul>
-        {/isEdit}
     </section>
 </nav>

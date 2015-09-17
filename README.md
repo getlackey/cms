@@ -28,20 +28,21 @@ Grunts default task uses supervisor and watch to keep updating when any file is 
 
 ## Configuration
 
-The config file can be found in /config. Check https://github.com/lorenwest/node-config/wiki/Configuration-Files for documentation.
+The config file can be found in /config. Check the [documentation](https://github.com/lorenwest/node-config/wiki/Configuration-Files).
 
 This project accepts 2 environment properties:
 
 - NODE_ENV 
 - PORT
 
-NODE_ENV has to be one of **development**, **staging** or **production**. By default it will be set as development.
+NODE_ENV has to be one of **development**, **staging** or **production**. By default it will be set as development. Take a look at "[The drastic effects of omitting NODE_ENV in your Express.js applications](http://apmblog.dynatrace.com/2015/07/22/the-drastic-effects-of-omitting-node_env-in-your-express-js-applications/)"
 
 PORT can be an HTTP Port or an Unix Domain Socket. By default it will be port 8000.
  
 
 ## App Login
+This is the default authentication. Please update it as soon as possible.
 
-username: admin@lackey.io
-password: lackeyio
+- username: admin@lackey.io
+- password: lackeyio
 

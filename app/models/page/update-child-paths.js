@@ -18,21 +18,30 @@
 var path = require('path'),
     logger = require('../../lib/logger');
 
-module.exports = function (next) {
-    var self = this;
+module.exports = function (self) {
+    var now = new Date(),
+        Model = require('../page');
 
-    self.populate('parent', 'path', function (err) {
-        var paths;
+    Model
+        .find({
+            parent: self._id
+        })
+        .exec()
+        .then(function (docs) {
+            if (!docs) {
+                return docs;
+            }
 
-        if (err) {
-            return next(err);
-        }
-
-        paths = (self.parent && self.parent.path.split('/')) || [];
-        paths.push(self.slug);
-
-        self.path = paths.join('/');
-
-        next();
-    });
+            docs.forEach(function (doc) {
+                doc.updatedAt = now;
+                doc.save(function (err) {
+                    if (err) {
+                        logger.error(err);
+                    }
+                });
+            });
+        })
+        .then(null, function (err) {
+            logger.error(err);
+        });
 };

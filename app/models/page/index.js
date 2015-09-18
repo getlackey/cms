@@ -61,6 +61,7 @@ mongoSchema.plugin(mongooseRefValidator, {
 
 mongoSchema.pre('save', require('./update-path'));
 mongoSchema.pre('save', require('./check-is-homepage'));
+mongoSchema.post('save', require('./update-child-paths'));
 
 Model = dbs.main.model(schemaName, mongoSchema);
 

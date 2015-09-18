@@ -67,7 +67,7 @@ cms.register({
 module.exports = function (router) {
     /**
      * @SwaggerPath
-     *   /articles:
+     *   /media:
      *     get:
      *       summary: Get list of Items
      *       description: Get list of articles
@@ -132,7 +132,7 @@ module.exports = function (router) {
         }));
     /**
      * @SwaggerPath
-     *   /articles/{id}:
+     *   /media/{id}:
      *     get:
      *       summary: Get data for one item
      *       description: Several elements can be used as an unique identifier.
@@ -189,7 +189,7 @@ module.exports = function (router) {
         }));
     /**
      * @SwaggerPath
-     *   /articles:
+     *   /media:
      *     post:
      *       summary: Create a new item
      *       tags:
@@ -229,7 +229,7 @@ module.exports = function (router) {
         }));
     /**
      * @SwaggerPath
-     *   /articles/{id}:
+     *   /media/{id}:
      *     put:
      *       summary: Update data for one item
      *       description: Several elements can be used as an unique identifier.
@@ -269,7 +269,7 @@ module.exports = function (router) {
         }));
     /**
      * @SwaggerPath
-     *   /articles/{id}:
+     *   /media/{id}:
      *     delete:
      *       summary: Delete one item
      *       description: Several elements can be used as an unique identifier.

@@ -23,7 +23,7 @@ var ActivityStream = require('../../models/activity-stream'),
 
 /**
  * @swaggerTag
- * activityStreams:
+ * ActivityStreams:
  *   description: All methods that change data (POST/PUT/DELETE) across the API are logged
  */
 module.exports = function (router) {
@@ -33,7 +33,7 @@ module.exports = function (router) {
      *     get:
      *       summary: Get the latest items
      *       tags:
-     *         - activityStreams
+     *         - ActivityStreams
      *       responses:
      *         200:
      *           description: OK
@@ -60,7 +60,7 @@ module.exports = function (router) {
      *     get:
      *       summary: Get data for one item
      *       tags:
-     *         - activityStreams
+     *         - ActivityStreams
      *       parameters:
      *         - name: id
      *           in: path

@@ -40,7 +40,7 @@ cms.register({
 
 /**
  * @swaggerTag
- * tag:
+ * Tag:
  *   description: Tag
  */
 module.exports = function (router) {
@@ -51,7 +51,7 @@ module.exports = function (router) {
      *       summary: Get list of Items
      *       description: Get list of tags
      *       tags:
-     *         - tag
+     *         - Tag
      *       parameters:
      *         - name: find
      *           in: query
@@ -117,7 +117,7 @@ module.exports = function (router) {
      *       description: Several elements can be used as an unique identifier.
      *         You can use the ObjectId provided as **id** or the **slug**.
      *       tags:
-     *         - tag
+     *         - Tag
      *       parameters:
      *         - name: id
      *           in: path
@@ -147,7 +147,7 @@ module.exports = function (router) {
      *     post:
      *       summary: Create a new item
      *       tags:
-     *         - tag
+     *         - Tag
      *       parameters:
      *         - name: body
      *           in: body
@@ -187,7 +187,7 @@ module.exports = function (router) {
      *       description: Several elements can be used as an unique identifier.
      *         You can use the ObjectId provided as **id** or the **slug**.
      *       tags:
-     *         - tag
+     *         - Tag
      *       parameters:
      *         - name: id
      *           in: path
@@ -232,7 +232,7 @@ module.exports = function (router) {
      *       description: Several elements can be used as an unique identifier.
      *         You can use the ObjectId provided as **id** or the **slug**.
      *       tags:
-     *         - tag
+     *         - Tag
      *       parameters:
      *         - name: id
      *           in: path

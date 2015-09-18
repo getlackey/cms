@@ -5,6 +5,9 @@
 		{^user}
 
 			<form class="user" method="post" action="{?req.query.recover}recover-sessions{:else}sessions{/req.query.recover}">
+
+				<input name="redirectUrl" value="{req.query.redirectUrl}" type="hidden">
+
 				<div class="row">
 					<div class="small-12 columns">
 					

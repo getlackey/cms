@@ -66,6 +66,7 @@ module.exports = function (router) {
                 .get(o.req.body)
                 .then(function (user) {
                     var persistent = o.req.body.persistent,
+                        redirectUrl = o.req.body.redirectUrl,
                         ttl = persistent ? 0 : 1000 * 60 * 60 * 5; //5hrs
 
                     Session
@@ -84,7 +85,7 @@ module.exports = function (router) {
                             });
                             return data;
                         })
-                        .then(o.handleOutput('html:redirect(' + config.get('baseUrl') + ') json'))
+                        .then(o.handleOutput('html:redirect(' + config.get('baseUrl') + redirectUrl + ') json'))
                         .then(o.handle404())
                         .then(null, o.handleError());
                 })

@@ -89,7 +89,8 @@ obj.ensureLoggedIn = function () {
         if (!jwtPayload) {
             o.res.status(401);
             o.handleOutput('html:errors/401 json')({
-                msg: 'Authentication Error'
+                msg: 'Authentication Error',
+                redirectUrl: o.req.originalUrl
             });
             return;
         }
@@ -106,7 +107,8 @@ obj.ensureLoggedIn = function () {
                     o.res.clearCookie('jwt');
                     o.res.status(401);
                     o.handleOutput('html:errors/401-expired json')({
-                        msg: 'Authentication Error - Expired'
+                        msg: 'Authentication Error - Expired',
+                        redirectUrl: o.req.originalUrl
                     });
                 } else {
                     populateEnvVars(jwtPayload.id, token, session, o);

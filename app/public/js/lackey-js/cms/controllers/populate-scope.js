@@ -31,21 +31,6 @@ module.exports = function ($scope, restEntity, $sce) {
         throw new Error('unable to find grid container element with id main-grid');
     }
 
-    $scope.locale = angular.element('.search.locale').val() || null;
-
-    if ($scope.locale) {
-        $scope.$watch('locale', function (current, previous) {
-            if (current !== previous) {
-                $scope.myData = restEntity.fetchItems({
-                    include: Object.keys(dataColumns).join(','),
-                    find: {
-                        locale: $scope.locale
-                    }
-                });
-            }
-        });
-    }
-
     $scope.data = {
         title: $sce.trustAsHtml('...')
     };
@@ -81,9 +66,7 @@ module.exports = function ($scope, restEntity, $sce) {
     if ($scope.myData === undefined) {
         $scope.myData = restEntity.fetchItems({
             include: Object.keys(dataColumns).join(','),
-            find: {
-                locale: $scope.locale
-            }
+            find: {}
         });
     }
 

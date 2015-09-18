@@ -1,10 +1,20 @@
 /*jslint node:true, nomen:true */
 'use strict';
 
-var $$names.entity$$ = require('../../models/$$names.singular$$'),
+var config = require('config'),
+    merge = require('merge'),
+    $$names.entity$$ = require('../../models/$$names.singular$$'),
     handler = require('lackey-request-handler'),
+    mongooseUtils = require('lackey-mongoose-utils'),
     auth = require('../../lib/auth'),
-    cms = require('../../lib/cms');
+    cms = require('../../lib/cms'),
+    handlerOptions = {
+        logger: require('../../lib/logger'),
+        // NOTE: remember to keep doc/comments in sync
+        limit: 100,
+        skip: 10000,
+        sort: '_id slug createdAt'
+    };
 
 cms.register({
     controller: '$$names.plural$$',
@@ -36,19 +46,19 @@ module.exports = function (router) {
      */
     router.get('/',
         auth.isAny('admin developer'),
-        handler(function (o) {
+        handler(handlerOptions, function (o) {
             $$names.entity$$
-                .find(o.filter())
+                .find(o.find())
+                .checkAcl(o.res.user)
                 .select(o.select())
-                .sort(o.sort('-id'))
+                .sort(o.sort('-_id'))
                 .limit(o.limit(20))
                 .skip(o.skip())
                 .lean(true)
                 .exec()
                 .then(o.formatOutput('_id:id *'))
                 .then(o.handleOutput('html:$$names.plural$$ json'))
-                .then(o.handle404())
-                .then(null, o.handleError());
+                .then(o.handle404(), o.handleError());
         }));
 
     /**
@@ -79,15 +89,15 @@ module.exports = function (router) {
      */
     router.get('/:id',
         auth.isAny('admin developer'),
-        handler(function (o) {
+        handler(handlerOptions, function (o) {
             $$names.entity$$
-                .findOne(o.getFilter())
+                .findOne(o.getFilter('id:ObjectId(_id),slug'))
                 .lean(true)
                 .exec()
+                .then($$names.entity$$.checkAcl(o.res.user))
                 .then(o.formatOutput('_id:id *'))
-                .then(o.handleOutput('html:$$names.singular$$ json'))
-                .then(o.handle404())
-                .then(null, o.handleError());
+                .then(o.handleOutput('html:$$names.plural$$/$$names.singular$$ json'))
+                .then(o.handle404(), o.handleError());
         }));
 
     /**
@@ -119,15 +129,16 @@ module.exports = function (router) {
      */
     router.post('/',
         auth.isAny('admin developer'),
-        handler(function (o) {
-            o.getBody().then(function (doc) {
-                $$names.entity$$
-                    .create(doc)
-                    .then(o.formatOutput('_id:id'))
-                    .then(o.handleOutput('html:$$names.plural$$ json'))
-                    .then(o.handle404())
-                    .then(null, o.handleError());
-            });
+        handler(handlerOptions, function (o) {
+            o.getBody()
+                .then($$names.entity$$.ensureObjectIds)
+                .then(function (doc) {
+                    $$names.entity$$
+                        .create(doc)
+                        .then(o.formatOutput('_id:id'))
+                        .then(o.handleOutput('html:$$names.plural$$ json'))
+                        .then(o.handle404(), o.handleError());
+                });
         }));
 
     /**
@@ -150,13 +161,12 @@ module.exports = function (router) {
      */
     router['delete']('/',
         auth.isAny('admin developer'),
-        handler(function (o) {
+        handler(handlerOptions, function (o) {
             $$names.entity$$
                 .remove()
                 .exec()
                 .then(o.handleOutput('_id:id'))
-                .then(o.handle404())
-                .then(null, o.handleError());
+                .then(o.handle404(), o.handleError());
         }));
 
     /**
@@ -195,18 +205,21 @@ module.exports = function (router) {
 
     router.put('/:id',
         auth.isAny('admin developer'),
-        handler(function (o, m) {
-            o.getBody().then(function (doc) {
-                $$names.entity$$
-                    .findOne(o.getFilter())
-                    .exec()
-                    .then(m.mergeData(doc))
-                    .then(m.save)
-                    .then(o.formatOutput('_id:id'))
-                    .then(o.handleOutput())
-                    .then(o.handle404())
-                    .then(null, o.handleError());
-            });
+         handler(handlerOptions, function (o) {
+            o.getBody()
+                .then($$names.entity$$.ensureObjectIds)
+                .then(function (doc) {
+                    $$names.entity$$
+                        .findOne(o.getFilter('id:ObjectId(_id)'))
+                        .exec()
+                        .then(o.handle404())
+                        .then(mongooseUtils.update(merge(doc)))
+                        .then(mongooseUtils.save)
+                        .then(o.formatOutput('_id:id'))
+                        .then(o.handleOutput())
+                        .then(null, o.handleError());
+                })
+                .then(null, o.handleError());
         }));
 
     /**
@@ -238,14 +251,13 @@ module.exports = function (router) {
      */
     router['delete']('/:id',
         auth.isAny('admin developer'),
-        handler(function (o, m) {
+        handler(handlerOptions, function (o) {
             $$names.entity$$
-                .findOne(o.getFilter())
+                .findOne(o.getFilter('id:ObjectId(_id)'))
                 .exec()
-                .then(m.remove)
+                .then(mongooseUtils.remove)
                 .then(o.handleOutput())
-                .then(o.handle404())
-                .then(null, o.handleError());
+                .then(o.handle404(), o.handleError());
         }));
     /**
      * @swagger

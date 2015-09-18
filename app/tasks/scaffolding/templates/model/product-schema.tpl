@@ -1,6 +1,9 @@
 /*jslint node:true, nomen: true */
 'use strict';
 
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
+
 module.exports = {
     title: {
         type: String,
@@ -8,9 +11,6 @@ module.exports = {
     },
     slug: {
         type: String,
-        required: true,
-        index: {
-            unique: true
-        }
+        unique: true
     }
 };

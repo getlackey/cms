@@ -2,11 +2,14 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    version = require('mongoose-version'),
+    version = require('lackey-mongoose-version'),
     timestamps = require('mongoose-timestamp'),
-    slugHistory = require('../../lib/mongoose-slug-history'),
-    uniqueSlug = require('../../lib/mongoose-unique-slug'),
+    acl = require('lackey-mongoose-acl'),
+    slugify = require('lackey-mongoose-slugify'),
+    ensureObjectIds = require('lackey-mongoose-ensure-object-ids'),
+    mongooseRefValidator = require('lackey-mongoose-ref-validator'),
     dbs = require('../../lib/mongoose-connections'),
+    logger = require('../../lib/logger'),
     Schema = mongoose.Schema,
     schemaName = '$$names.singular$$',
     Model,
@@ -15,26 +18,22 @@ var mongoose = require('mongoose'),
 
 mongoSchema = new Schema(require('./$$names.singular$$-schema'));
 
-// there is a bug in this plugin. Will only work with a 
-// single mongoose connection
-
-// mongoSchema.plugin(version, {
-//     maxVersions: 100,
-//     strategy: 'array',
-//     suppressVersionIncrement: false,
-//     collection: schemaName + '-versions',
-//     logError: true
-// });
-
 mongoSchema.plugin(timestamps);
-
-mongoSchema.plugin(slugHistory, {
-    name: schemaName
+mongoSchema.plugin(acl, {
+    required: ['admin', 'developer']
+});
+mongoSchema.plugin(slugify, {
+    logger: logger
+});
+mongoSchema.plugin(version, {
+    suppressVersionIncrement: false,
+    collection: schemaName + '-versions',
+    logError: true
+});
+mongoSchema.plugin(ensureObjectIds, {
+    'tag': 'slug ids'
 });
 
-// clears the slug if provided. Otherwise, converts the title to a slug
-// duplicated slugs will be suffixed by a random number
-mongoSchema.plugin(uniqueSlug);
-
 Model = dbs.main.model(schemaName, mongoSchema);
+
 module.exports = Model;

@@ -24,7 +24,6 @@ var mongoose = require('mongoose'),
     acl = require('lackey-mongoose-acl'),
     slugify = require('lackey-mongoose-slugify'),
     logger = require('../../lib/logger'),
-    mongooseLocality = require('../../lib/mongoose-locality'),
     Schema = mongoose.Schema,
     schemaName = 'media',
     Model,
@@ -50,7 +49,6 @@ mongoSchema.plugin(timestamps);
 mongoSchema.plugin(acl, {
     required: ['admin', 'developer']
 });
-mongoSchema.plugin(mongooseLocality);
 mongoSchema.plugin(slugify, {
     logger: logger
 });

@@ -1,4 +1,4 @@
-/*jslint node:true, browser:true, unparam:true */
+/*jslint node:true, browser:true, unparam:true, nomen:true */
 /*global angular */
 'use strict';
 /*
@@ -36,14 +36,21 @@ module.exports = function (app) {
             obj.opts = null;
             //obj.definitions = null;
 
-            obj.fetch = function (skip) {
+            obj.fetch = function (lastId) {
                 var opts = obj.opts || {};
 
                 if (!opts.limit) {
                     opts.limit = 30;
                 }
+                opts.sort = '-_id';
 
-                opts.skip = skip;
+                if (lastId) {
+                    opts.find = {
+                        "_id": {
+                            "$lt": lastId
+                        }
+                    };
+                }
 
                 obj.Entity.getList(opts).then(function (data) {
                     if (!data.length) {
@@ -52,12 +59,12 @@ module.exports = function (app) {
 
                     //append to items
                     data.forEach(function (item) {
+                        lastId = item.id || item._id;
                         obj.items.push(item);
                     });
 
-                    skip += data.length;
                     setTimeout(function () {
-                        obj.fetch(skip);
+                        obj.fetch(lastId);
                     }, 100);
                 });
             };

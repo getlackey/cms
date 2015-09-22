@@ -18,7 +18,7 @@ In most places, options can be provided as an object, or as a string or even arr
         opt3: 'my_option'
     }
 
-There are additional methods. For instance to convert my_option to "My option". Please check module [lackey-options-parser](https://www.npmjs.com/package/lackey-options-parser).
+There are additional methods. For instance to convert my_option to "My option". Please check the module [lackey-options-parser](https://www.npmjs.com/package/lackey-options-parser).
 
 ## Models
 Model names are always sigular and lowercase.

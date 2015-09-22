@@ -20,7 +20,10 @@ var path = require('path'),
     express = require('express'),
     config = require('config'),
     dust = require('dustjs-linkedin'),
-    lackeyDustjsHelpers = require('lackey-dustjs-helpers'),
+    lackeyDustjsApi = require('lackey-dustjs-api'),
+    lackeyDustjsMongoose = require('lackey-dustjs-mongoose'),
+    lackeyDustjsVar = require('lackey-dustjs-var'),
+    lackeyDustjsOptions = require('lackey-dustjs-options'),
     http = require('http'),
     appDependencies = require('./lib/app-dependencies'),
     logger = require('./lib/logger'),
@@ -38,7 +41,10 @@ if (config.get('newRelic.key')) {
 //   load the ones from linkedin
 dust.helpers = require('dustjs-helpers').helpers;
 //   load Lackey's helpers
-lackeyDustjsHelpers.registerAll(dust);
+lackeyDustjsApi(dust);
+lackeyDustjsMongoose(dust);
+lackeyDustjsVar(dust);
+lackeyDustjsOptions(dust);
 //   load from dir
 appDependencies.set(dust, path.join(__dirname, 'app-dustjs-helpers'));
 // Load custom middleware

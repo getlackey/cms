@@ -26,9 +26,9 @@ obj.dust = dust;
 // extra helpers
 obj.dust.helpers = require('dustjs-helpers').helpers;
 //load var helper
-require('lackey-dustjs-helpers')['var'](obj.dust);
+require('lackey-dustjs-var')(obj.dust);
 //load options helper
-require('lackey-dustjs-helpers').options(obj.dust);
+require('lackey-dustjs-options')(obj.dust);
 
 obj.loadTemplate = function (templatePath, cb) {
     var basePath = '/views/dust/';

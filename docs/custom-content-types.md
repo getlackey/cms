@@ -12,7 +12,7 @@ Open a command line and cd into /app and then run **grunt scaffold**.
 The following message will show: *Which component do you need to create?*
 Just press enter to create the full bundle.
 
-Then you will required the name of the entity. That should be a singular word. We use a pluralisation module to create the plural version where appropriate, according to our own [convention](./coding-conventions).
+Then you will be required the name of the entity. That should be a singular word. We use a pluralisation module to create the plural version where appropriate, according to our own [convention](./coding-conventions.md).
 
 After submitting the name you should see these messages:
 
@@ -27,6 +27,8 @@ Done, without errors.
 ## The Controller
 
 The default controller will be found in /controller/products, for our example. 
+
+Let's look at some code inside the controller file.
 
 ### handlerOptions
 
@@ -48,7 +50,7 @@ Keeping it modular is the main reason we need to provide a logger instead of pul
 
 ### CMS
 
-We found it confusing to manage everything visually, straight in the public templates. Some actions like adding/removing content are best performed with a content list. You can see an example of this by going to /cms/articles and seeing how it behaves.
+We found it confusing to manage everything visually, straight in the public templates. Some actions like adding/removing content are best performed with a content list. You can see an example of this by pointing your browser to /cms/articles and seeing how it behaves.
 
 You will notice that, in the articles grid, you are only required to provide the article title to create a new document. We are parsing the properties in the model schema and only the required ones will be shown. This form is generated transparently using the [form data](https://www.npmjs.com/package/lackey-form-data) module. 
 

@@ -43,7 +43,7 @@ Articles are similar to pages, but there is no option to choose the template. Ar
 
 Articles should be used to add news to a website. Pages should be used on information that don't change often.
 
-Altough you can use articles for other types of data, like list of products or services, it's always a better idea to [create a custom content type]('./custom-content-types.md')
+Altough you can use articles for other types of data, like list of products or services, it's always a better idea to [create a custom content type](./custom-content-types.md)
 
 ## Shared Content
 Information that needs to be shared in several pages but shouldn't be saved as either a page or an article. Eg. header and footer messages. The creation/destruction of shared content is restricted to developer users, but any admin user can change it's value.

@@ -1,6 +1,6 @@
 # Coding Conventions
 
-All JS code is checked against JSlint. Make sure you have the appropriate lines on the top of every file. Eg.:
+All JS code is checked against jslint. Make sure you have the appropriate lines on the top of every file. Eg.:
     
     /*jslint node:true */
     'use strict';

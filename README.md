@@ -1,48 +1,37 @@
-# Lackey CMS
+# Intro
+Lackey CMS... Visual (WYSIWYG) editor and site builder powered by a REST API.
 
-## Installation
+# Instalation
+Lackey relies on Node.js and MongoDb. You should install these first. 
+[check the instalation tutorial](./docs/instalation.md)
 
-Nodejs and MongoDb need to be already installed in the system.
+# What is already available
+Lackey comes with a basic website/blog structure. You can easily add custom content types, but the ones already present should allow you a lot of flexibility.
 
-If you don't have Bower and Grunt already installed:
 
-	$ npm install -g grunt-cli
-	$ npm install -g bower
-	
-Then:
+Lackey comes with:
 
-    $ cd app
-    $ npm install
-    $ bower install
-    $ grunt build
-    
-You can then run the app with either:
+ - Users
+ - Dashboard
+ - Pages
+ - Articles
+ - Shared Content
+ - Menus
+ - Media
+ - Tags
 
-    $ grunt 
+[How to use these content types](./docs/content-types.md)
 
-Or
+# Themes and Plugins
+We believe that NPM is a very decent plug-in manager. There is no need to create another layer of complexity in this tool.
 
-    $ npm start
+Lackey is not one of these tools where you have to be careful with the core folders. Most of what makes Lackey's core is installed in the node_modules folder and managed through NPM. Everything else should be adjusted to suit your custom website needs.
 
-Grunts default task uses supervisor and watch to keep updating when any file is changed. Keep an eye on the shell messages as the compile steps may break. 
+Read more on how to [create a custom theme](./docs/custom-theme.md)
 
-## Configuration
+# REST API
+If you need to integrate any tool with your website, Lackey makes it easy for you. The full website **is** an API and you can just add .json or .htm(l) to the end of any url to get it in that specific format. 
 
-The config file can be found in /config. Check the [documentation](https://github.com/lorenwest/node-config/wiki/Configuration-Files).
+You can access the full API documentation, that follows the [Swagger Spec.](http://swagger.io/) by going to /swagger.json in your website. We don't yet support any API Docs in HTML but you can just visit the [Swagger UI](http://petstore.swagger.io/) page and paste your swagger.json url on the main input box to access the full sandbox and documentation.
 
-This project accepts 2 environment properties:
-
-- NODE_ENV 
-- PORT
-
-NODE_ENV has to be one of **development**, **staging** or **production**. By default it will be set as development. Take a look at "[The drastic effects of omitting NODE_ENV in your Express.js applications](http://apmblog.dynatrace.com/2015/07/22/the-drastic-effects-of-omitting-node_env-in-your-express-js-applications/)"
-
-PORT can be an HTTP Port or an Unix Domain Socket. By default it will be port 8000.
- 
-
-## App Login
-This is the default authentication. Please update it as soon as possible.
-
-- username: admin@lackey.io
-- password: lackeyio
-
+Read more about the [REST API and Authentication](./docs/rest.md)

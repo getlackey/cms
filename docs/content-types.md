@@ -12,12 +12,12 @@ Lackey comes with:
  - Tags
 
 ## Users
-Lackey comes with a user management system and access control to any content. The default user groups are:
+Lackey comes with a user management system and [content access control](./acl.md). The default user groups are:
 
  - developer
  - admin
 
-Developers are some sort of super admins. They are able to change settings that will affect how the website will look. Some of these settings need to be changed directly on the configuration and template files, inside the source code of the project.
+Developers are some sort of super admins. They are able to change settings that will affect how the website will look. 
 
 Admins have access to the visual tools to manage content.
 

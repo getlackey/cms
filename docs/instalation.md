@@ -39,7 +39,9 @@ PORT can be an HTTP Port or an Unix Domain Socket. By default it will be port 80
  
 
 ## App Login
-This is the default authentication. Please update it as soon as possible - you should find the profile link on the top right corner, after logging in.
+This is the default authentication. 
+
+**Please update it as soon as possible** - you should find the profile link on the top right corner, after logging in.
 
 - username: admin@lackey.io
 - password: lackeyio

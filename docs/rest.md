@@ -8,7 +8,9 @@ We use a token based authentication on top of [JSON Web Tokens](http://jwt.io/).
             
 To create a new session issue a POST request to {baseUrl}/sessions providing your email and password:
 
-   <code>curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"email": "{user.email}", "password": "XXXXXXXXXX"}' {baseUrl}/sessions</code>
+```
+curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"email": "{user.email}", "password": "XXXXXXXXXX"}' {baseUrl}/sessions
+```
 
 **Please, remember to replace your password.**
 
@@ -38,5 +40,8 @@ Cookies are usually used for the text/html responses as they really simplify the
 
 Url Querystring is the easier method for authentication. Just provide the token in the querystring as jwt.
 
-    <code>curl -X GET -H "Accept: application/json" {baseUrl}/api/v1/users?jwt=XXXXXXXXXXXX</code>
-	<strong>Please remember to replace your password.</strong>
+```
+curl -X GET -H "Accept: application/json" {baseUrl}/api/v1/users?jwt=XXXXXXXXXXXX
+```
+
+**Please remember to replace your password.**

@@ -14,7 +14,7 @@ There are 2 special user groups:
 
 These groups should not be deleted but feel free to change the value of the property. That will be the string used as label in website.
 
-If you need additional groups of users just add them to this file. By default they will have no special permissions.
+If you need additional groups of users just add them to this file but, by default, they will have no special permissions.
 
 ## Adding permissions to new Groups
 
@@ -29,12 +29,12 @@ router.post('/',
     (...) 
 ```
 
-The Auth library can be used as express middleware. It transparently accesses the user object (o.res.user) and calls the available methods there:
+The Auth library is an express middleware. It transparently accesses the user object (o.res.user) and calls the available methods there:
 
 - is(group)
 - isAny('group1 group2 ... groupN')
 
-A HTTP 401 or a 403 will be thrown depending on the case. Either way the following functions registered in that route will not be run unless we have a valid user.
+An HTTP 401 or a 403 will be thrown depending on the case. Either way the following functions registered in that route will not be run unless we have a valid user.
 
 ### The user Object
 If you need to add special validations inside a controller, depending on the user group this is how you should do it:

@@ -23,7 +23,13 @@ var config = require('config'),
     mongooseUtils = require('lackey-mongoose-utils'),
     User = require('../../models/user'),
     auth = require('../../lib/auth'),
+    cms = require('../../lib/cms'),
     baseUrl = config.get('baseUrl');
+
+cms.register({
+    controller: 'users',
+    columns: 'name email group'
+});
 
 module.exports = function (router) {
     router.get('/',

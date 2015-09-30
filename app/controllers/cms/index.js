@@ -24,37 +24,6 @@ var handler = require('lackey-request-handler'),
 
 module.exports = function (router) {
     // CRUD interface. Only some entities are allowed
-    router.get('/users',
-        auth.isAny('admin developer'),
-        handler(function (o) {
-            var Entity = require('../../models/user'),
-                data = {
-                    entity: 'users',
-                    title: 'Users',
-                    columns: 'name email group'
-                };
-
-            data.form = {
-                action: 'users',
-                items: formData().model(Entity).getRequired(),
-                useAjax: true
-            };
-            // split the group options to the ones that appear before
-            // the logged in user group
-            data.form.items.some(function (item) {
-                var opts = [];
-                if (item.name === 'group') {
-                    item.options.some(function (option) {
-                        opts.push(option);
-                        return (option.label === o.res.user.group);
-                    });
-                    item.options = opts;
-                }
-            });
-
-            o.handleOutput('html:cms json')(data);
-        }));
-
     router.get('/media',
         auth.isAny('admin developer'),
         handler(function (o) {

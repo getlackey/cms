@@ -30,7 +30,8 @@ module.exports = {
     email: {
         type: String,
         required: true,
-        label: 'E-mail'
+        label: 'E-mail',
+        unique: true
     },
     slug: {
         type: String,

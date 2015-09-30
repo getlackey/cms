@@ -36,7 +36,8 @@ module.exports = function (router) {
 
             data.form = {
                 action: 'users',
-                items: formData().model(Entity).getRequired()
+                items: formData().model(Entity).getRequired(),
+                useAjax: true
             };
             // split the group options to the ones that appear before
             // the logged in user group

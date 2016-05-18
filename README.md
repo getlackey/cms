@@ -1,3 +1,6 @@
+
+#**DEPRECATED** - see /getlackey/lackey-cms for latest version
+
 # Lackey CMS
 
 ## Installation
